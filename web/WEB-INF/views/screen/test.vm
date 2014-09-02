@@ -1,0 +1,346 @@
+#xForm_start({"name":"testForm","url":"test.htm","fileupload":true, "target":"_self"})
+  #xLayoutPanel_start({"debug":false,"width:":"80%", "cols":4, "fieldset":true, "fieldsetStyle":"border:0px"})
+				#xPropertyGrid({"colspan":1, "name":"propGrid", "editable":true,"parentEditable":false,
+			"height":"270px",	"iconPath":"$!{service_name}/resources/images/",
+			"props":[
+				{"name":"test","value":{"type":"list","values":"1,2,3,4","value":"2"}},
+				{"name":"test2","parent":"test","value":{"type":"list","values":"1,2,3,4","value":"2"}},
+				{"name":"test3","value":{"type":"ro"}},
+				{"name":"test4","value":{"type":"ednum"}}
+			]
+		})
+		#xButtons({"colspan":4,"cellHeight":"40px","cellAlign":"right", "btnAlign":"center", "cellVAlign":"middle","style":"margin-right:24px",
+			"items":[
+				{"value":"新增","onClick":"alert(XComps.getComp('hid').getValue())"},
+				{"value":"修改","onClick":"XComps.getComp('hid').setValue(123)"},
+				{"value":"删除", "disabled":true, "style":"margin-right:20px"},
+				{"value":"关闭弹出窗", "onClick":"if(invoker){invoker.returnData(11,22);invoker.closePopup()}"}
+			]
+		})
+		#xHidden({"name":"hid"})
+		#xLayoutPanel_start({"debug":false,"colspan":1,"rowspan":2,"cols":1,"fieldset":true, "fieldsetStyle":"border:0px"})
+  		#xTextField({"labelDelimiter":"->","label":"金额","required":true,"value":"xsdfs","sufLabel":"元"})
+  		#xTextField({"label":"测试3","required":true,"value":"xsdfs","disabled":true})
+  		#xTextField({"label":"120px标签宽度4", "labelWidth":"120px", "required":false,"value":"xsdfs", "readOnly":true})
+  		#xTextField({"label":"","required":true,"value":"无标签"})
+		#xLayoutPanel_end
+		#xLayoutPanel_start({"debug":false,"colspan":3,"rowspan":2,"cols":3,"fieldset":true, "legend":"中华人民共和国", "fieldsetStyle":"height:110px"})
+  		#xTextField({"labelDelimiter":"->","label":"测试2","required":true,"value":"xsdfs"})
+  		#xTextField({"label":"测试3","required":true,"value":"xsdfs"})
+  		#xEmptyRow
+  		#xTextField({"label":"120px标签宽度4", "labelWidth":"120px", "required":false,"value":"xsdfs"})
+  		#xTextField({"label":"Last5","required":true,"value":"xsdfs"})
+		#xLayoutPanel_end
+		#xButton({"cellAlign":"middle","type":"button","value":"执行", "onClick":"evalScript()"})
+		#xButtons({"colspan":3, "cellAlign":"right",
+			"items":[
+  			{"value":"Group","onClick":"testGrid.groupBy(2)"},
+  			{"value":"全选","onClick":"checkAll()"},
+  			{"value":"全不选","onClick":"uncheckAll()"},
+  			{"value":"反选","onClick":"invCheckAll()"},
+  			{"value":"查看选中(多)","onClick":"getCheckeds()"},
+  			{"value":"查看选中(单)","onClick":"getSelected()"},
+  			{"value":"LoadX","onClick":"loadGridX()"},
+  			{"value":"Reload","onClick":"testGrid.reload()"},
+  			{"value":"clear","onClick":"clearGrid()"}]
+		})
+		#xTextArea_start({"id":"txtEval","name":"txtEval","colspan":2, "rowspan":5,"rows":"10", "label":"Eval","required":true,"cellVAlign":"top","readOnly":false})alert($.toJSONString(XComps.getComp("treeCombo").getSelectedDatas('tag')));#xTextArea_end
+		#xPanel_start({"colspan":2, "rowspan":10})
+		#xGrid({"colspan":2, "rowspan":10, "name":"testGrid", "multiple":false, "cellVAlign":"top", "height":"300px",
+			"autoLoad":false, "dataUrl":"$!{service_name}/test.json", "rowRender":"gridRowRender(tr,data)", 
+			"baseParams":"{subject:'CBANK'}", "multiple":true, "editable":true, "autoAdjust":true,
+			"events":{
+				"onInit":"gridInit()"
+				,"onRowSelect":"onGridRowSelect(this, rid, cid)"
+			},
+			"columns": [
+				{"type":"cntr","title":"序号", "width":"40px", "align":"center"},
+  			{"dataIdx":"text", "title":"名称", "type":"tree"},
+  			{"dataIdx":"type", "width":180, "minWidth":34, "title":"类型"},
+  			{"dataIdx":"tag", "width":180, "title":"标识"},
+  			{"dataIdx":"target", "width":180, "minWidth":60, "title":"目标内容"},
+  			{"dataIdx":"id", "title":"ID", "type":"dict", "dictName":"appMenu"},
+  			{"dataIdx":"id", "title":"ID", "type":"dict", "dictName":"sysMenu"},
+  			{"dataIdx":"order", "width":180, "title":"排序", "type":"ron", "align":"right", "format":"￥0,000.00", "render":"gridColRender(td,data,rowData)"},
+  			{"dataIdx":"url", "width":200, "title":"URL", "align":"right"}
+  		]})
+		#xPanel_end
+		#xPassword({"label":"测试6","required":true,"value":"xsdfs","cellVAlign":"top"})
+		#xTextField({"label":"测试10","required":true,"value":"xsdfs"})
+		#xTextField({"label":"测试7","required":true,"value":"xsdfs"})
+		#xTextField({"noLabel":true, "label":"测试7","required":true,"value":"无标签"})
+		#xTextField({"id":"test1", "name":"test1", "label":"test1","required":true,"value":"xsdfs"})
+		#xTextField({"label":"测试9","required":true,"value":"xsdfs","disabled":true,  "width":"50px"})
+		#xTextField({"label":"测试10","required":true,"value":"xsdfs"})
+		#xLabel({"id":"lbl", "label":"测试", "text":"中华"})
+		#xTextField({"label":"测试7","required":true,"value":"xsdfs"})
+		#xCalendar({"id":"bDate","name":"bDate","label":"开始","disabled":true, "required":true,"value":"","readOnly":true,"maxDateRef":"#eDate","dateCfg":"{dateFmt:'yyyyMMdd'}"})
+		#xCalendar({"id":"eDate","name":"eDate","label":"结束","required":true,"value":"","dateFmt":"yyyyMMdd","editable":false,"minDateRef":"#bDate","onCleared":"alert(dp.cal.getDateStr())"})
+		#xCombo({"id":"select1","name":"select1","label":"下拉单选","required":true,"value":"002",
+			"valueRef":"#ref1", "textRef":"#ref2",
+			"editable":false, "firstNull":true, "firstNullText":"---全部---", "showValue":true,
+			"items":[{"value":"001","text":"AAAAAA"},{"value":"002","text":"BBBBBBBB"},{"value":"003","text":"CCCC"}]
+		})
+		#xTextField({"id":"ref1", "name":"test2", "label":"关联Value","required":false,"value":"xsdfs"})
+		#xTextField({"id":"ref2", "name":"test2", "label":"关联Text","required":false,"value":"xsdfs"})
+		#xCombo({"id":"select2","name":"select2","label":"下拉多选","multiple":true,
+			"required":true,"value":"","editable":false,"showValue":false,
+			"items":[{"value":"001","text":"中中中"},{"value":"002","text":"国国国国"},{"value":"003","text":"人人人人"},{"value":"004","text":"DDDDDD"},{"value":"005","text":"EEEEEE"},{"value":"006","text":"FFFFFF"},{"value":"007","text":"GGGGGG"},{"value":"008","text":"HHHHH"},{"value":"001","text":"AAAAA"}]
+		})
+		#xCombo({"id":"select3","name":"select3","label":"应用菜单","multiple":false, "firstNull":true,
+			"valueKey":"id", "textKey":"text", "required":true,"value":"","editable":false,
+			"items":$dict.getDicts("appMenu"), "popupWidth":"300px"
+		})
+		#xPopCombo({"id":"pop1","name":"pop1","label":"弹出窗口","popupTitle":"xxxx", "editable":true,
+			"minimize":false, "maximize":false, "closable":true, "movable":true, "resizable":false,
+			"dataUrl":"$!{service_name}/test.htm","required":true,
+			"onBeforePopup":"doBeforePopup", "onReturn":"doPopComboReturn"})
+		#xTextField({"label":"测试9","required":true,"value":"xsdfs","disabled":true,  "width":"80%"})
+		#xCombo({"id":"select4","name":"select4","label":"字典列表","required":true,"showValue":true, "value4Text":true,
+			"firstNull":true,"firstNullText":"---请选择---","selectFirst":true, "onSelected":"loadSubDict(this)",
+			"dataUrl":"$!{service_name}/getDictInfoList.json?dictName=sysDictInfo.SYS", "dataKey":"dictList", "valueKey":"dictKey", "textKey":"dictValue", "titleKey":"dictValue"})
+		#xCombo({"id":"select5","name":"select5","label":"字典明细","required":true,"showValue":true,
+			"selectFirst":true, "dataKey":"dictList", "valueKey":"dictKey", "textKey":"dictValue","titleKey":"remark"})
+		#xRadio({"label":"测试7","required":true,"name":"option","readOnly":false,"cols":3,"onChecked":"alert(value)",
+			"items":[{"id":"opt1","value":"opt1","label":"选项1"}
+				,{"id":"opt2","value":"opt2","label":"选项2", "checked":true}
+				,{"id":"opt3","value":"opt3","label":"选项3"}
+				,{"id":"opt4","value":"opt4","label":"选项4"}
+				,{"id":"opt5","value":"opt5","label":"选项5"}]})
+		#xCheckbox({"label":"测试7","required":true,"name":"chk","readOnly":false,"cols":4,"onChecked":"alert(item.value+'='+item.checked)",
+			"items":[{"id":"chk1","value":"chk1","label":"选项1"}
+				,{"id":"chk2","value":"chk2","label":"选项2", "checked":true}
+				,{"id":"chk3","value":"chk3","label":"选项3"}
+				,{"id":"chk4","value":"chk4","label":"选项4", "checked":true, "disabled":true}
+				,{"id":"chk5","value":"chk5","label":"选项5"}]})
+		#xTreeCombo({"name":"treeCombo", "rootId":"200000",  "iconPath":"$!{service_name}/resources/images/", "leafImgKey":"icon",
+			  "multiple":true, "checkRelative":false, "treeLine":true, "openLevel":2,	"label":"菜单树", "required":true,
+				"showValue":true, "unSelectedIds":"201000","checkOnClick":true,
+				"idKey":"id", "textKey":"text", "value":"201014,201015",
+				"asyncLoad_":true, "asyncUrl_":"$!{service_name}/test.json", "dataKey":"rows","leafFlagKey":"leaf",
+				"dataUrl":"$!{service_name}/test.json",	"items_":$dict.getDicts("appMenu")
+			})
+		#xTextField({"id":"xx", "name":"xx", "label":"XX","required":true,"value":"xx"})
+		#xPanel_start
+  		<div style="border:1px solid red;width:95%;height:30px">格子内嵌任意DIV</div>
+		#xPanel_end
+		#xEmptyCell
+		#xEmptyRow
+    #hrline({"colspan":4})
+		#xTree({"name":"testTree", "rootId":"200000",  "iconPath":"$!{service_name}/resources/images/", "leafImgKey":"icon",
+			"keyNav":false, "checkable":true, "checkRelative":true, "treeLine":true, "openLevel":2, "checkOnClick":true,
+			"items_":[{"id":"200000", "parentId":"-", "text":"TREE_ROOT"}], "selectableChecker":"return id!='201000'", "keyNav":true,
+			"items__":$dict.getDicts("appMenu"),
+			"dataKey":"rows", "leafFlagKey":"leaf",
+			"dataUrl__":"$!{service_name}/test.json",
+			"dataUrl__":"$!{service_name}/test.json?id=200000",
+			"asyncLoad":true, "asyncUrl":"$!{service_name}/test.json",
+			"events":{
+				"onNodeDblClick" : "treeNodeClick"
+			}
+		});
+		#xGrid({"colspan":3, "name":"testGrid2", "multiple":true, "paging":true, "pageCount":100,"pageBarReload":true,
+			"autoLoad":true, "dataUrl":"$!{service_name}/test.json", "height":"270px",
+			"iconPath":"$!{service_name}/resources/images/", "showTreeIcon":true,
+			"treeLeafImgKey":"icon",
+			"baseParams":"{subject:'SYS',withcol:false}", "_rowFilter":"filterSomeRow","autoAdjust":true,
+			"events":{
+				"onRowDblClicked" : "testGrid2.addXRow({'id':444,'text':'tttt'})"
+			},
+			"columns":[
+  			{"type":"cntr", "title":"序号", "width":"40px", "align":"center"},
+				{"dataIdx":"id", "title":"ID", "type":"tree"},
+  			{"dataIdx":"text", "title":"名称2"},
+  			{"dataIdx":"tag", "width":180, "title":"标识"},
+  			{"dataIdx":"target", "width":180, "title":"目标"},
+  			{"dataIdx":"id", "title":"ID", "type":"dict", "dictName":"appMenu"},
+  			{"dataIdx":"id", "title":"ID", "type":"dict", "dictName":"sysMenu"},
+  			{"dataIdx":"order", "width":180, "title":"排序", "type":"ron", "format":"￥0,000.00"},
+  			{"dataIdx":"url", "width":200, "title":"URL", "align":"right"}
+  		]})
+		#hrline({"colspan":4})
+
+	#xLayoutPanel_end
+#xForm_end
+<br>
+<button onclick="testPropGrid()">Show Props</button>
+<button onclick="testTree.reload()">Refresh Tree</button>
+<button onclick="XComps.getComp('option').setValue('opt7')">radio opt4</button>
+<button onclick="alert(XComps.getComp('option').getValue())">radio getValue()</button>
+<button onclick="XComps.getComp('option').setReadOnly(true)">radio readonly=true</button>
+<button onclick="XComps.getComp('option').setReadOnly(false)">radio readonly=false</button>
+<button onclick="alert(XComps.getComp('chk').isChecked('#chk2'))">chk2 checked?</button>
+<button onclick="XComps.getComp('chk').setValue('chk1,chk3,chk5')">set chk value</button>
+<button onclick="alert(XComps.getComp('chk').getValue())">get chk value</button>
+<button onclick="XComps.getComp('chk').setReadOnly(true)">chk readonly=true</button>
+<button onclick="XComps.getComp('chk').setReadOnly(false)">chk readonly=false</button>
+<button onclick="XComps.getComp('bDate').setDisabled(true)">calc dis=true</button>
+<button onclick="XComps.getComp('bDate').setDisabled(false)">calc dis=false</button>
+<button onclick="XComps.getComp('bDate').setReadOnly(true)">calc read=true</button>
+<button onclick="XComps.getComp('bDate').setReadOnly(false)">calc read=false</button>
+<button onclick="XComps.getComp('bDate').setEditable(true)">calc edit=true</button>
+<button onclick="XComps.getComp('bDate').setEditable(false)">calc edit=false</button>
+<BR>
+<button onclick="XComps.getComp('#select1').clearData()">clearSelect1</button>
+<button onclick="for(i=0;i<10;i++){XComps.getComp('#select1').addData(Math.round(Math.random()*1000),Math.round(Math.random()*1000))}">addSelect1</button>
+<button onclick="XComps.getComp('#select1').removeData(['111','222'])">removeSelect1=111</button>
+<button onclick="XComps.getComp('#select2').setDisabled(true)">Select2 dis=true</button>
+<button onclick="XComps.getComp('#select2').setDisabled(false)">Select2 dis=false</button>
+<button onclick="XComps.getComp('#select2').setReadOnly(true)">Select2 readonly=true</button>
+<button onclick="XComps.getComp('#select2').setReadOnly(false)">Select2 readonly=false</button>
+<button onclick="XComps.getComp('#select2').clearData()">clearSelect2</button>
+<button onclick="XComps.getComp('#select2').addData([{value:'111',text:'aaa'},{value:'222',text:'bbb'},{value:'333',text:'ccc'}])">addSelect2</button>
+<button onclick="loadGridFromJSONX()">grid form jsonx</button>
+
+<button onclick="XComps.getComp('#pop1').setReadOnly(true)">pop readonly=true</button>
+<button onclick="XComps.getComp('#pop1').setReadOnly(false)">pop readonly=false</button>
+<button onclick="XComps.getComp('#select2').setValue('')">setCombo</button>
+<button onclick="XComps.getComp('#lbl').setText('<font color=red>中华人民共和国</font>')">setLabel text</button>
+<button onclick="alert(XComps.getComp('#lbl').getText())">getLabel text</button>
+#dictDefine("appMenu")
+#dictDefine("sysMenu")
+#dictDefine("sysDictInfo.SYS.YHDM", "yhdm")
+#sysDictDefine("DZCJZT", "zz")
+#localDictDefine("status", {"1":"有效","0":"无效"})
+#localDictDefine("target", {"":"无","TAB":"标签页","_self":"当前页"})
+<script>
+XComps.onReady(checkAll);
+
+function testPropGrid(){
+	alert($.toJSONString(propGrid.getProperties()));
+	propGrid.setProperties({test:4,test2:4,test3:4});
+	alert("reInit");
+	propGrid.initProperties([
+		{"name":"BorderSize", "value":{"type":"ednum","value":"2"}},
+		{"name":"BorderColor", "value":{"type":"cp","value":"#FF00FF"}},
+		{"name":"BorderWidth", "value":{"type":"ednum","value":"2"}},
+		{"name":"BorderStyle", "value":"solid"},
+		{"name":"Sum", "value":{"type":"dyn","value":"#FF0000"}}
+	])
+	
+}
+function evalScript(){
+	var src = XComps.getComp("txtEval").getValue();
+	if(src.length==0)
+		return;
+	try{
+		eval(src);
+	}catch(e){
+		alert("Exception:" + e);
+	}
+}
+
+
+function loadSubDict(pCombo){
+	XComps.getComp('#select5').loadData(pCombo.dataUrl+"."+pCombo.getValue());
+}
+function loadGridFromJSONX(){
+	testGrid.clearAll();
+	$.getJSON(testGrid._dataUrl, function(json){
+		testGrid.parsex(json);
+	});
+}
+
+function filterSomeRow(data){
+	if(data.tag=="APP_MENU")
+		return false;
+}
+
+function doBeforePopup(){
+	alert("bfpopup");
+	this.urlParams = {"key": Math.random()};
+	if(this.getValue()=="false")
+		return false;
+	else
+		return true;
+}
+
+function doPopComboReturn(a, b){
+	alert("doPopComboReturn=" + a + "," + b);
+}
+
+function gridRowRender(tr, data){
+	if(data.order==1){
+		tr.style.color = "#FF0000";
+	}
+}
+
+function gridColRender(td, data, rowData){
+	if(data>1){
+		td.innerHTML = '<b style="font-size:14px">!</b> ' + td.innerHTML;
+		td.style.color = "#0000FF";
+		
+	}
+}
+
+function gridBeforeInit(){
+
+}
+
+function gridInit(){
+//	 alert("ColId1=" + testGrid.getColumnId(0));
+//	 testGrid.load("$!{service_name}/test.json","jsonx");
+//	 testGrid.load("$!{service_name}/maintain/getDataListBankInfo.json","jsonx");
+//	 testGrid.attachEvent("onRowSelect",function(rid, cid){
+//			onGridRowSelect(this, rid, cid);
+//	 });
+//	 testGrid.attachEvent("onBeforeSorting", function(idx, type, dir){
+//	 	  if(onBeforeSort(this, idx, type, dir)==false)
+//				return false;
+//			else
+//				return true;
+//	 });
+//	testGrid.callEvent("onXLS",[testGrid,"Loading","500"]);
+}
+
+function onGridRowSelect(grid, rid, cid){
+	XComps.getComp("test1").setValue(grid.getDataByRowId(rid).text);
+}
+
+function onBeforeSort(grid, idx, type, dir){
+	alert(idx + "," + type);
+}
+
+function getCheckeds(){
+	alert(testGrid.getCheckedRowIds());
+	alert(testGrid.getCheckedDatas("text"));
+	alert($.toJSONString(testGrid.getCheckedDatas()));
+}
+
+function treeNodeClick(id){
+	var tree = this;
+	alert($.toJSONString(tree.getSelectedData()));
+	alert("Select=" + tree.getSelectedItemId() + ", Checked=" + tree.getCheckedBranchDatas('id'));
+	var data = tree.getCheckedBranchDatas();
+	alert($.toJSONString(data));
+}
+
+function checkAll(){
+	testGrid.checkAll();
+}
+
+function invCheckAll(){
+	testGrid.invCheckAll();
+}
+
+function uncheckAll(){
+	testGrid.uncheckAll();
+}
+
+function getSelected(){
+	var data = testGrid.getSelectedData();
+	if(data==null)
+		alert("UnSelected");
+	else
+		alert($.toJSONString(data));
+}
+
+function clearGrid(){
+	testGrid.clearAll();
+}
+
+function loadGridX(){
+  var t = "SYS_MENU";
+	testGrid.loadx("$!{service_name}/test.json",{withcol:false});
+}
+</script>

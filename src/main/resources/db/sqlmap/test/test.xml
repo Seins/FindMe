@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="test">
+    <select id="queryUserInfo" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM SYS_USER
+        WHERE
+        LOGIN_NAME=#loginName#
+        AND
+        LOGIN_PASSWORD=md5(#loginPassword#)
+    </select>
+
+    <select id="queryUserInfoByIdcardNo" parameterClass="map" resultClass="hashMap">
+        SELECT l.*,u.* From login_info as l,personal_info as u
+        WHERE
+            IDCARD_NO=#idcardNo#
+        AND
+            l.ID=u.USER_ID
+    </select>
+    <select id="queryAllUser" parameterClass="map" resultClass="hashMap">
+        SELECT l.*,u.* From login_info as l,personal_info as u
+        WHERE l.ID = u.USER_ID
+    </select>
+    <select id="getUserInfoById" parameterClass="map" resultClass="hashMap">
+        SELECT l.*,u.* From login_info as l,personal_info as u
+        WHERE
+            l.ID=#userId#
+        AND
+            l.ID=u.USER_ID
+    </select>
+ </sqlMap>

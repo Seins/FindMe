@@ -1,0 +1,46 @@
+<!--[if lt IE 10]>
+<script type="text/javascript" src="$!{service_name}/resources/pie/PIE.js"></script>
+<![endif]-->
+<div class="contentDiv" id="contentDiv" >
+    <div class="topLineDiv">
+       <font color="#fff" style="line-height: 50px;display: block;color: #fff;font-size:16px;font: bold;margin-left:10px;">Input You Id Card Number,Search You Infomation:</font>
+    </div>
+    <div class="inputDiv"  >
+        <div class="input-uname" style="width: 360px;border-color:#7CCD7C;margin-left:200px; ">
+            <label for="userName" class="inputTip" style="font: bold;color: #ccc;">Id Card Number</label>
+            <input type="text" id="idcardNo" name="idcardNo"  style="width: 250px;" maxlength="18"/>
+        </div>
+    </div>
+##    <div class="inputDiv">
+##        <div class="input-upassword">
+##            <label for="userPassword" class="inputTip">Key</label>
+##            <input type="password" id="userPassword"  name="password"/>
+##        </div>
+##    </div>
+    <div class="submitDiv">
+        <input type="button" value="》》》" class="btn btn-success" style="border-radius: 0;width: 100px;" onclick="login()"/>
+    </div>
+</div>
+##    <hr style="color:#7CCD7C;margin:3px;height: 1px;"/>
+##    <p>还可以使用以下方式登录</p>
+##    <div>
+##        <span class="qqIcon"></span>
+##        <span class="weiboIcon"></span>
+##    </div>
+
+<script>
+    function login(){
+        var userId=$('#idcardNo').val();
+        var params={
+            "idcardNo":userId
+        }
+        $.post("$!{service_name}/freemind.json",params,function(data){
+            if(data.result==true){
+                location.href="$!{service_name}/home.htm";
+            }else{
+                alert('登录失败：'+data.errorInfo);
+            }
+        });
+    }
+</script>
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+           version="3.0">
+    <display-name>框架测试</display-name>
+    <mime-mapping>
+        <extension>htc</extension>
+        <mime-type>text/x-component</mime-type>
+    </mime-mapping>
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>cube.root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>appContextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>configLocationParam</param-name>
+        <param-value>system.properties</param-value>
+    </context-param>
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/classes/log4j.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>log4jExposeWebAppRoot</param-name>
+        <param-value>true</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>log4jRefreshInterval</param-name>
+        <param-value>10000</param-value>
+    </context-param>
+
+
+
+    <listener>
+        <listener-class>com.sagahl.horn.listener.AppInitListener</listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <!--<listener>-->
+        <!--<listener-class>com.sagahl.horn.listener.IntializationListener</listener-class>-->
+    <!--</listener>-->
+    <!--<listener>-->
+        <!--<listener-class>-->
+            <!--org.springframework.web.context.ContextLoaderListener-->
+        <!--</listener-class>-->
+    <!--</listener>-->
+    <filter>
+        <filter-name>requestContextFilter</filter-name>
+        <filter-class>com.sagahl.horn.filter.RequestContextFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+<filter-mapping>
+    <filter-name>requestContextFilter</filter-name>
+    <url-pattern>*.json</url-pattern>
+</filter-mapping>
+    <servlet>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <servlet-class>com.sagahl.horn.servlet.DispatcherServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.htm</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.json</url-pattern>
+    </servlet-mapping>
+
+
+    <error-page>
+        <location>/WEB-INF/jsp/error/404.html</location>
+        <error-code>400</error-code>
+    </error-page>
+    <error-page>
+        <location>/WEB-INF/jsp/error/404.html</location>
+        <error-code>404</error-code>
+    </error-page>
+    <error-page>
+        <location>/WEB-INF/jsp/error/500.html</location>
+        <error-code>500</error-code>
+    </error-page>
+    <welcome-file-list>
+        <welcome-file>/login.htm</welcome-file>
+    </welcome-file-list>
+</web-app>

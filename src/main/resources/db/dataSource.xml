@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+					 http://www.springframework.org/schema/beans
+					 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+					 http://www.springframework.org/schema/tx
+					 http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!-- 注解式事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!--非Tomcat环境推存使用JTA事务管理器，使用该选项时候，必须使用一个容器管理的DataSource(即使用应用服务器JNDI数据源)
+    <bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" />
+    -->
+
+    <!-- 使用JNDI数据源，非Tomcat环境下配置jndi-name值为CUBEDB，Tomcat环境下配置jndi-name值为java:/comp/env/BizDB -->
+    <!--
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName">
+            <value>BizDB</value>
+        </property>
+    </bean>-->
+
+    <!-- DBCP MySQL数据源
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/mysql?useUnicode=true" />
+        <property name="username" value="root" />
+        <property name="password" value="admin" />
+        <property name="maxActive" value="10" />
+        <property name="maxWait" value="5" />
+        <property name="maxIdle" value="30000" />
+        <property name="defaultAutoCommit" value="true" />
+    </bean>
+    -->
+
+    <!-- DBCP Oracel数据源
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/cube?autoReconnect=true" />
+        <property name="username" value="cube" />
+        <property name="password" value="cube" />
+        <property name="maxActive" value="50" />
+        <property name="maxWait" value="5" />
+        <property name="maxIdle" value="30000" />
+        <property name="defaultAutoCommit" value="true" />
+    </bean>
+    -->
+
+    <!-- C3P0的参数说明
+        <!- -连接池中保留的最小连接数 - ->
+        <property name="minPoolSize" value="2" />
+        <!- -连接池中保留的最大连接数，Default: 15 - ->
+        <property name="maxPoolSize" value="30"/>
+        <!- -初始化时获取连接数，取值应在minPoolSize与maxPoolSize之间，Default: 3 - ->
+        <property name="initialPoolSize" value="2"/>
+        <!- -最大空闲时间,指定时间内未使用则连接被丢弃。若为0则永不丢弃,单位秒，Default: 0 - ->
+        <property name="maxIdleTime" value="30000"/>
+        <!- -连接关闭时默认将所有未提交的操作回滚，Default: false - ->
+        <property name="autoCommitOnClose">false</property>
+        <!- -当连接池中的连接耗尽的时候c3p0一次同时获取的连接数，Default: 3 - ->
+        <property name="acquireIncrement" value="1"/>
+        <!- -定义在从数据库获取新连接失败后重复尝试的次数，Default: 30 - ->
+        <property name="acquireRetryAttempts" value="30"/>
+        <!- -两次连接中间隔时间，单位毫秒，Default: 1000 - ->
+        <property name="acquireRetryDelay" value="100"/>
+        <!- -如果设为true那么在取得连接的同时将校验连接的有效性，Default: false - ->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <!- -c3p0将建一张名为Test的空表，并使用其自带的查询语句进行测试。如果定义了这个参数那么
+            属性preferredTestQuery将被忽略。你不能在这张Test表上进行任何操作，它将只供c3p0测试
+            使用。Default: null- ->
+        <property name="automaticTestTable" value="C3P0TestTable"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <!- -检查所有连接池中的空闲连接是否可用周期,单位秒，Default: 0 - ->
+        <property name="idleConnectionTestPeriod" value="18000"/>
+        <!- -当连接池用完时客户端调用getConnection()后等待获取新连接的时间，超时后将抛出SQLException,如设为0则无限期等待，单位毫秒，Default: 0 - ->
+        <property name="checkoutTimeout" value="3000"/>
+    -->
+
+    <!-- 使用本地Oracle数据源
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
+        <property name="user" value="vess" />
+        <property name="password" value="vess" />
+        <property name="minPoolSize" value="2" />
+        <property name="maxPoolSize" value="100"/>
+        <property name="initialPoolSize" value="2"/>
+        <property name="maxIdleTime" value="30000"/>
+        <property name="autoCommitOnClose" value="true"/>
+        <property name="acquireIncrement" value="2"/>
+        <property name="acquireRetryAttempts" value="30"/>
+        <property name="acquireRetryDelay" value="500"/>
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="idleConnectionTestPeriod" value="18000"/>
+        <property name="checkoutTimeout" value="10000"/>
+    </bean>
+    -->
+
+    <!-- 使用本地MySQL数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="com.mysql.jdbc.Driver" />
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/personal_info?useUnicode=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;failOverReadOnly=false" />
+        <property name="user" value="root" />
+        <property name="password" value="feng19921225" />
+        <property name="minPoolSize" value="2" />
+        <property name="maxPoolSize" value="30"/>
+        <property name="initialPoolSize" value="2"/>
+        <property name="maxIdleTime" value="30000"/>
+        <property name="autoCommitOnClose" value="true"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="acquireRetryAttempts" value="30"/>
+        <property name="acquireRetryDelay" value="100"/>
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="idleConnectionTestPeriod" value="18000"/>
+        <property name="checkoutTimeout" value="3000"/>
+    </bean>
+
+    <!--
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property name="dataSource" ref="dataSource" />
+        <property name="changeLog" value="classpath:config/db/dbChangeLog.xml" />
+    </bean>
+    -->
+
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocations">
+            <list>
+                <value>classpath:/db/sqlmap/sqlmapConfig.xml</value>
+            </list>
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath:/db/sqlmap/*.xml</value>
+                <value>classpath:/db/sqlmap/**/*.xml</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

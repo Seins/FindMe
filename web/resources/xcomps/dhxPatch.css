@@ -1,0 +1,298 @@
+.dhtmlxcalendar_container {
+  font-size: 12px;
+}
+
+.dhtmlxcalendar_container div.dhtmlxcalendar_month_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_month_hdr {
+  font-size: 12px;
+}
+
+.dhtmlxcalendar_container div.dhtmlxcalendar_time_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_time_hdr {
+  font-size: 12px;
+}
+
+.dhtmlxcalendar_container div.dhtmlxcalendar_time_cont ul.dhtmlxcalendar_line li.dhtmlxcalendar_cell.dhtmlxcalendar_time_hdr span.dhtmlxcalendar_label_colon {
+  font-size: 12px;
+}
+
+.dhx_axis_item_y.dhx_radar{
+  font-size: 12px;
+}
+
+.dhtmlxcolorpicker_dhx_skyblue .cs_CustomColorAdd_Mini_Hover{
+  font-size: 12px;
+}
+
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonOk_Hover{
+  font-size: 12px;
+}
+
+.dhtmlxcolorpicker_dhx_skyblue .cs_ButtonCancel_Hover{
+  font-size: 12px;
+}
+
+.dhx_combo_box.dhx_skyblue .dhx_combo_input {
+  font-size: 12px;
+}
+
+.dhx_combo_list.dhx_skyblue_list{
+  font-size: 12px
+}
+
+.dhx_combo_list_rtl.dhx_skyblue_list{
+  font-size: 12px;
+}
+
+div.gridbox_light table.hdr td {
+  font-size: 12px;
+}
+
+div.gridbox_light table.obj td {
+  font-size: 12px;
+}
+
+div.gridbox_light .dhx_combo_edit{
+  font-size: 12px;
+}
+
+div.gridbox_modern table.hdr td {
+  font-size: 12px;
+}
+
+div.gridbox_modern table.obj td {
+  font-size: 12px;
+}
+
+div.gridbox_modern .dhx_combo_edit{
+  font-size: 12px;
+}
+
+div.gridbox_clear table.hdr td {
+  font-size: 12px;
+}
+
+div.gridbox_clear table.obj td {
+  font-size: 12px;
+}
+
+div.gridbox_clear .dhx_combo_edit{
+  font-size: 12px;
+}
+
+div.gridbox_sbdark table.hdr td {
+ font-size:12px;
+}
+
+div.gridbox_sbdark table.obj td {
+  font-size: 12px;
+}
+
+div.gridbox_sbdark .dhx_combo_edit{
+  font-size: 12px;
+}
+
+div.dhx_tabbar_zone_dhx_skyblue div.dhxcont_sb_container div.dhxcont_statusbar {
+  font-size: 12px;
+}
+
+.dhxtree_dhx_skyblue .standartTreeRow, .dhxtree_dhx_skyblue .standartTreeRow_lor{
+  font-size: 12px !important;
+}
+
+.dhxtree_dhx_skyblue .selectedTreeRow_lor, .dhxtree_dhx_skyblue .selectedTreeRow{
+  font-size:12px;
+  background-color:#FFE2A5;
+}
+
+div.dhx_acc_base_dhx_skyblue div.dhx_acc_item div.dhx_acc_item_label {
+  font-size: 12px;
+}
+
+div.dhx_acc_base_dhx_skyblue div.dhxcont_statusbar {
+  font-size: 12px;
+}
+
+div.gridbox_dhx_skyblue table.hdr td {
+  font-size: 12px;
+}
+
+.dhx_combo_select, .gridbox_dhx_skyblue .dhx_combo_edit, .gridbox_dhx_skyblue .dhx_textarea{
+  font-size:12px
+}
+
+table.dhtmlxLayoutPolyContainer_dhx_skyblue td.dhtmlxLayoutSinglePoly div.dhtmlxPolyInfoBar div.dhtmlxInfoBarLabel {
+  font-size: 12px;
+}
+
+table.dhtmlxLayoutPolyContainer_dhx_skyblue td.dhtmlxLayoutSinglePoly div.dhtmlxPolyInnerContainer {
+  font-size: 12px;
+}
+
+div.dhxcont_global_layout_area div.dhxcont_sb_container div.dhxcont_statusbar {
+  font-size: 12px;
+}
+
+table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhxcont_global_layout_area div.dhxcont_sb_container div.dhxcont_statusbar {
+  font-size: 12px;
+}
+
+table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhxcont_statusbar {
+  font-size: 12px;
+}
+
+table.dhtmlxLayoutPolyContainer_dhx_skyblue td.dhtmlxLayoutSinglePoly div.dhtmlxPolyInfoBarCollapsedHor div.dhtmlxInfoBarLabel_collapsed_ver {
+  font-size: 12px;
+}
+
+table.dhtmlxLayoutPolyContainer_dhx_skyblue td.dhtmlxLayoutSinglePoly div.dhtmlxPolyInfoBarCollapsedVer div.dhtmlxInfoBarLabel_collapsed_hor {
+ font-size: 12px;
+}
+
+div.dhtmlxMenu_dhx_skyblue_TopLevel_Item_Selected {
+  font-size: 12px;
+}
+
+div.dhtmlxMenu_dhx_skyblue_SubLevelArea_Polygon table.dhtmlxMebu_SubLevelArea_Tbl div.sub_item_text {
+  font-size: 12px;
+}
+
+.dhtmlxMenu_dhx_skyblue_Middle div.dhtmlxMenu_TopLevel_Text_right {
+  font-size: 12px;
+}
+
+.dhtmlxMenu_dhx_skyblue_Middle div.dhtmlxMenu_TopLevel_Text_left {
+  font-size: 12px;
+}
+
+.dhx_toolbar_base_48_dhx_skyblue div.dhx_toolbar_btn div {
+  font-size: 12px;
+}
+
+.dhx_toolbar_base_48_dhx_skyblue div.dhx_toolbar_arw div.arwimg {
+  font-size: 12px;
+}
+
+div.dhx_toolbar_poly_48_dhx_skyblue td.td_btn_txt div.btn_sel_text {
+  font-size: 12px;
+}
+
+.dhx_toolbar_base_48_dhx_skyblue div.dhx_toolbar_text {
+  font-size: 12px;
+}
+
+.dhx_toolbar_base_48_dhx_skyblue div.dhx_toolbar_btn .inp {
+  font-size: 12px;
+}
+
+.dhtmlx_skin_dhx_skyblue div.dhtmlx_window_active div.dhtmlx_wins_title {
+  font-size: 12px;
+}
+
+.dhtmlx_skin_dhx_skyblue div.dhtmlx_window_inactive div.dhtmlx_wins_title {
+  font-size: 12px;
+}
+
+.dhtmlx_skin_dhx_skyblue div.dhxcont_sb_container div.dhxcont_statusbar {
+  font-size: 12px;
+}
+
+.dhx_tab_element{
+  font-size:12px;
+}
+
+.dhx_toolbar_base_18_dhx_skyblue div.dhx_toolbar_btn div,
+.dhx_toolbar_base_24_dhx_skyblue div.dhx_toolbar_btn div,
+.dhx_toolbar_base_32_dhx_skyblue div.dhx_toolbar_btn div,
+.dhx_toolbar_base_48_dhx_skyblue div.dhx_toolbar_btn div {
+	font-size: 12px;
+}
+
+.dhx_toolbar_base_18_dhx_skyblue div.dhx_toolbar_text,
+.dhx_toolbar_base_24_dhx_skyblue div.dhx_toolbar_text,
+.dhx_toolbar_base_32_dhx_skyblue div.dhx_toolbar_text,
+.dhx_toolbar_base_48_dhx_skyblue div.dhx_toolbar_text {
+	font-size: 12px; 
+}
+
+div.dhx_toolbar_poly_18_dhx_skyblue td.td_btn_txt div.btn_sel_text,
+div.dhx_toolbar_poly_24_dhx_skyblue td.td_btn_txt div.btn_sel_text,
+div.dhx_toolbar_poly_32_dhx_skyblue td.td_btn_txt div.btn_sel_text,
+div.dhx_toolbar_poly_48_dhx_skyblue td.td_btn_txt div.btn_sel_text {
+	font-size: 12px;
+}
+
+.dhx_toolbar_base_18_dhx_skyblue div.dhx_toolbar_btn div {
+  margin: 1px 2px 1px 2px;
+  padding-bottom:1px\9;
+  _margin: 1px 2px 0px 2px;
+  _padding-bottom:0px;
+}
+
+div.gridbox_dhx_skyblue table.obj tr td{
+	font-size:12px;
+	border-width: 0px 1px 1px 1px;
+	border-right-color:#A4BED4;
+	border-bottom-color:#e8e8e8
+}
+
+.dhtmlxGrid .xhdr .hdr .hdrcell input.chk{
+	width:14px;
+	height:14px;
+}
+
+.dhx_toolbar_base_18_dhx_skyblue{
+	background-image: none;
+}
+
+.dhx_toolbar_base_18_dhx_skyblue .dhxtoolbar_hdrline_ll, 
+.dhx_toolbar_base_18_dhx_skyblue .dhxtoolbar_hdrline_rr, 
+.dhx_toolbar_base_18_dhx_skyblue .dhxtoolbar_hdrline_l, 
+.dhx_toolbar_base_18_dhx_skyblue .dhxtoolbar_hdrline_r{
+	border: 0px !important;
+}
+
+div.gridbox div.ftr td{
+	font-weight:bold;
+	font-style: normal;
+	font-family: Tahoma;
+	font-size: 12px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.dhtmlx_skin_dhx_skyblue div.dhtmlx_window_active div.dhtmlx_wins_body_outer div.dhtmlx_wins_body_inner{
+	background-color: #ffffff !important;
+}
+ 
+.dhtmlx_skin_dhx_skyblue div.dhtmlx_window_inactive div.dhtmlx_wins_body_outer div.dhtmlx_wins_body_inner{
+	background-color: #ffffff !important;
+}
+
+
+div.xc-comp-xpropertygrid table.obj .property_title td {
+	background-color: #F0F0F0;
+	border-width: 1px 1px 1px 1px !important;
+	border-top: 1px solid white !important;
+	border-left: 1px solid white !important;
+	border-right: 1px solid #A0A0A0 !important;
+	border-bottom: 1px solid #A0A0A0 !important;
+}
+
+div.xc-comp-xpropertygrid table.obj .property_readonly td{
+  color:#666666 !important;
+  background-color:#F4F4F4 !important;
+}
+
+div.propertyGridEditor table.obj .property_title td {
+	background-color: #F0F0F0;
+	border-width: 1px 1px 1px 1px !important;
+	border-top: 1px solid white !important;
+	border-left: 1px solid white !important;
+	border-right: 1px solid #A0A0A0 !important;
+	border-bottom: 1px solid #A0A0A0 !important;
+}
+
+div.propertyGridEditor table.obj .property_readonly td{
+  color:#666666 !important;
+  background-color:#F4F4F4 !important;
+}
+

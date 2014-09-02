@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="FrameworkTest:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/FrameworkTest_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="FrameworkTest" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/cube-client.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/cube-server.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/cube-common.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/web/WEB-INF/lib/core-renderer-1.0.jar" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="FrameworkTest/web/Web" />
+    </root>
+  </artifact>
+</component>

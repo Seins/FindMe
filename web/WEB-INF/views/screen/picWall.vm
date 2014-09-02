@@ -1,0 +1,58 @@
+<link href="$!{service_name}/resources/css/picWall.css" type="text/css" rel="stylesheet"/>
+<!--[if lt IE 10]>
+<script type="text/javascript" src="$!{service_name}/resources/pie/PIE.js"></script>
+<![endif]-->
+<script language="javascript">
+    $(function() {
+        if (window.PIE) {
+            $('span').each(function() {
+                PIE.attach(this);
+            });
+        }
+    });
+</script>
+<script>
+    var imgArray=[{"imgPath":"$!{service_name}/resources/images/home/icon1.jpg","Tag":"邓风森"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/mxjxx-11795252090.jpg","Tag":"人物"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/dmgqj-9420072925.jpg","Tag":"动漫"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/bzjj-12635108264.jpg","Tag":"极简"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/bzbjtj-9505554496.jpg","Tag":"唯美"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/qclbjn-9562500115.jpg","Tag":"汽车"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/gxpdtg462-201-02.jpg","Tag":"搞笑"}];
+    $(document).ready(function(e) {
+        var height=$(window).height();
+        var width=$(window).width();
+        var contentWidth=$('.content').width();
+        var distance=contentWidth*0.04/5;
+        for(var i=0;i<5;i++){
+            var item=$("<div class='item' style='margin-left:"+distance+"px !important;'></div>");
+            $('.content').append(item);
+        }
+        var params={};
+        $.post("$!{service_name}/picWall.json",params,function(data) {
+            if(data.userList){
+                console.info("userList:%o",data.userList);
+                for(var i=0;i<data.userList.length;i++){
+                    insertImg(data.userList[i]);
+                }
+            }else{
+                console.error("请求失败:%o",data);
+            }
+
+        },"json");
+
+    });
+    function insertImg(data){
+        var minHeightItem=$('.item').first();
+        //获取最小高度列
+        $('.item').each(function(index, element) {
+            if($(element).height()< $(minHeightItem).height()){
+                minHeightItem=element;
+            }
+        });
+        //插入元素
+        var img=$("<div class='itemImg' ><img onclick='toPersonalHome("+data.ID+")' src='$!{service_name}"+data.USER_ICON+"'/><span>"+data.CHINESE_NAME+"</span></div>");
+        $(minHeightItem).append(img);
+    }
+
+    function toPersonalHome(id){
+        location.href="$!{service_name}/home.htm?userId="+id
+    }
+</script>
+<div class="content">
+
+</div>

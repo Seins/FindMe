@@ -1,0 +1,58 @@
+@import url(input.css);
+@import url(button.css);
+body{
+    background:url(../images/background/login_bg.jpg);
+    background-size: cover;
+}
+.contentDiv{
+    width:410px;
+    /*border:1px solid #7CCD7C;*/
+    min-height: 230px;
+    clear: both;
+    position: absolute;
+    top: 50%;
+    right: 20%;
+}
+.inputDiv{
+    margin-left: 28px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.submitDiv{
+    text-align: right;
+}
+.submitDiv input{
+    margin:15px 10px 0  0 ;
+}
+.topLineDiv{
+    display: block;
+    background:#7CCD7C;
+    text-align: center;
+    color:#fff;
+    font-family: '微软雅黑';
+    font-size: 16px;
+    line-height: 50px;
+    margin: 0;
+    padding: 0;
+
+}
+.qqIcon{
+    width:26px;
+    height: 24px;
+    background: url("../../resources/images/icon/pass_login_icons_51c6a837.png") 180px 0;
+    display: block;
+    cursor: pointer;
+    font-size: 12px;
+    float: left;
+    margin-left: 10px;
+}
+.weiboIcon{
+    width:26px;
+    height: 24px;
+    background: url("../../resources/images/icon/pass_login_icons_51c6a837.png") 152px 0;
+    display: block;
+    cursor: pointer;
+    font-size: 12px;
+    float: left;
+    margin-left: 10px;
+}

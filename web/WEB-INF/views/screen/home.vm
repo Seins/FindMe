@@ -1,0 +1,96 @@
+
+<!--[if lt IE 10]>
+<script type="text/javascript" src="$!{service_name}/resources/pie/PIE.js"></script>
+<![endif]-->
+<script language="javascript">
+    $(function() {
+        if (window.PIE) {
+            $('.contentDescIcon img').each(function() {
+                PIE.attach(this);
+            });
+
+        }
+    });
+</script>
+
+<!--[if IE]>
+    <style type="text/css">
+    .homeArtical .articalList .item a{
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#98EECFff ,endColorstr=#98EEEF);
+        color:#000 !important;
+    }
+</style>
+<![endif]-->
+
+<link rel="stylesheet" href="$!{service_name}/resources/css/home.css"/>
+<div class="homeNavLine">
+    <ul class="homeNav">
+        <li><a href="$!{service_name}/home.htm?userId=$!{userInfo.ID}">主页</a></li>
+        <li><a>个人中心</a></li>
+        <li><a>资料库</a></li>
+        <li><a>笔记</a></li>
+    </ul>
+</div>
+<div class="homeContent">
+   <div class="contentDescIcon">
+       <img src="$!{service_name}$!{userInfo.USER_ICON}">
+       <p class="contentName">$!{userInfo.ENGLISH_NAME}</p>
+   </div>
+   <div class="contentDesc">
+        <p><font color="#AD9991">Chinese Name:</font>$!{userInfo.CHINESE_NAME}</p>
+       <p style="margin-left: -10px;"><font color="#AD9991">BirthDay:</font>$!{userInfo.BIRTHDATE}</p>
+       <p style="margin-left: -30px;"><font color="#AD9991">Education:</font> $!{userInfo.EDUCATION}</p>
+       <p style="margin-left: -60px;word-break: break-all;max-width: 500px !important;"><font color="#AD9991">Hobbies:</font> $!{userInfo.HOBBIES}</p>
+   </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('.contentDescIcon img').slideDown(1000);
+        $('.contentName').slideDown(1000);
+    })
+
+</script>
+<div class="homeArtical">
+    <ul class="articalList">
+        <li>
+            <div class="item">
+                <img src="$!{service_name}/resources/images/home/page_design.png"/>
+                <a onclick="javascript:alert(1);">Web Design & Coding</a>
+            </div>
+        </li>
+        <li>
+        <div class="item">
+            <img src="$!{service_name}/resources/images/home/app_design.png"/>
+            <a>App Design & Coding</a>
+        </div>
+        </li>
+        <li>
+        <div class="item" >
+            <img src="$!{service_name}/resources/images/home/learning.png"/>
+            <a>Learning Process & Notes</a>
+        </div>
+        </li>
+        <li>
+        <div class="item">
+            <img src="$!{service_name}/resources/images/home/page_design.png"/>
+            <a>Work experience </a>
+        </div>
+        </li>
+        <li>
+        <div class="item">
+            <img src="$!{service_name}/resources/images/home/page_design.png"/>
+            <a></a>
+        </div>
+        </li>
+        <li>
+        <div class="item">
+            <img src="$!{service_name}/resources/images/home/page_design.png"/>
+            <a></a>
+        </div>
+        </li>
+        <li>
+    </ul>
+</div>
+<div class="footer">
+
+</div>

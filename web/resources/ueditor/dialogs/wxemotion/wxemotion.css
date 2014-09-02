@@ -1,0 +1,12 @@
+.wx img{
+    background:transparent url(images/wxface.gif) no-repeat scroll left top;
+    cursor:pointer;width:24px;height:24px;display:block;
+}
+.smileytable td {height: 26px;width:26px}
+#tabContent {float:left;background:#FFFFFF;}
+.menuFocus{background:#ACCD3C;}
+.menuDefault{background:#FFFFFF;}
+#tabIconReview.show{left:0px;display:block;}
+#tabIconReview{position:absolute;left:300px;left:300px \9;top:0px;z-index:65533;width:90px;height:76px;}
+img.review{width:90px;height:76px;border:2px solid #9cb945;background:#FFFFFF;background-position:center;background-repeat:no-repeat;}
+#tabContent td span{display: block;zoom:1;padding:0px;}

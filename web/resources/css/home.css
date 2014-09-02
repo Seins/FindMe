@@ -1,0 +1,197 @@
+body{
+    margin: 0;
+    padding: 0;
+    behavior: url(../pie/PIE.htc);
+    width:100% !important;
+    color: #fff;
+    min-width: 1000px;
+    background: #EFF3F8;
+}
+.homeNavLine{
+    min-height: 45px;
+    display: block;
+    position: fixed;
+    border-bottom:1px solid #ccc;
+    top:0;
+    z-index: 2;
+    width: 100%;
+    background: #DEE0D2;
+    /*background: url(../images/home/top_line_bg.png);*/
+}
+.homeNav{
+    display: block;
+    position:relative;
+    right: -50%;
+}
+.homeNav li{
+    display: block;
+    list-style: none;
+    float: left;
+    padding-top: 3px;
+    margin-left: 10px;
+    line-height: 30px;
+    cursor: pointer;
+    min-width:100px;
+    text-align: center;
+}
+.homeNav li a{
+    color:#B494AF;
+    font-size: 14px;
+    font:bold;
+    text-decoration:none;
+    font-family: '微软雅黑';
+    width:100%;
+    height: 100%;
+    display: block;
+    min-width:100px;
+}
+
+@-moz-keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+@-webkit-keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+@-o-keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+@keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+.homeNav li a:hover{
+    color:#fff;
+    border-radius:3px;
+    animation: bgShow 1s;
+    -moz-animation: bgShow 1s;	/* Firefox */
+    -webkit-animation: bgShow 1s;	/* Safari 和 Chrome */
+    -o-animation: bgShow 1s;
+    background: #ccc;
+}
+.homeContent{
+    border-bottom: 1px solid #fff;
+    min-height: 400px;
+    width: 100% !important;
+    display: block;
+    position:relative;
+    text-align: center;
+    background: url(../images/home/smiler.jpg) 0 45px;
+}
+.contentDescIcon{
+    display: block;
+    width: 200px;
+    position: relative;
+    top: 50px;
+    float: left;
+    margin-left: 10%;
+
+}
+.contentDescIcon img{
+    width: 200px;
+    height: 200px;
+    margin:15px auto;
+    display: none;
+    behavior: url(../pie/PIE.htc);
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    box-shadow:0  0 20px #fff;
+}
+.contentDescIcon p{
+    font-size: 20px;
+    font: bold;
+    font-family: '微软雅黑';
+    color:#8CA7A3;
+}
+.contentDesc{
+    min-height: 300px;
+    min-width: 500px;
+    height: 80%;
+    width: 50%;
+    margin-top: 80px;
+    float: left;
+    text-align: left;
+    margin-left: 3%;
+}
+.contentDesc p{
+    text-indent: 1cm;
+    max-width:300px;
+    line-height: 35px;
+    display: block;
+    clear: both;
+    color: #8CA7A3;
+    border-bottom: 1px dashed #8CA7A3;
+    font-size: 16px;
+    font: bold;
+    font-weight: 100;
+}
+.homeArtical{
+    min-height: 400px;
+    width: 100% !important;
+    display: block;
+    position:relative;
+    padding-top:2%;
+}
+.homeArtical .articalList{
+    min-width: 900px;
+    max-width: 60%;
+    margin: 0 auto;
+    min-height: 300px;
+    position:relative;
+    list-style: none;
+    overflow: hidden;
+    border-left:1px solid #ccc;
+    border-right: 1px solid #ccc;
+    text-align: center;
+}
+.homeArtical .articalList li{
+    list-style: none;
+    float: left;
+    behavior: url(../pie/PIE.htc);
+    margin:30px 10px;
+
+}
+.homeArtical .articalList li .item {
+    height: 240px;
+    width: 180px;
+    display: block;
+    position:relative;
+    border:10px solid #fff;
+    cursor: pointer;
+    border-bottom: 30px solid #fff;
+}
+.homeArtical .articalList li .item:hover{
+    border-color:#000;
+}
+.homeArtical .articalList .item img{
+    width:180px;
+    height: 240px;
+
+}
+.homeArtical .articalList .item a{
+    position:absolute;
+    line-height:60px;
+    bottom: 0%;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background:rgba(152,238,207,0.8);
+    text-align: center;
+    font-size: 14px;
+    font-weight:400;
+    font:bold;
+    font-family: '微软雅黑';
+    color:#fff;
+}
+.footer{
+    z-index: 2;
+    min-width: 1000px;
+    max-width: 90%;
+    margin:2% auto;
+    border-top: 2px solid #ccc;
+    min-height: 180px;
+    display: block;
+}

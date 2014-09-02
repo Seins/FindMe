@@ -1,0 +1,8 @@
+<div class="homeNavLine">
+    <ul class="homeNav">
+        <li><a>Hello</a></li>
+        <li><a href="$!{service_name}/picWall.htm">About Me</a></li>
+        <li><a>Libaray</a></li>
+        <li><a>Notes</a></li>
+    </ul>
+</div>
