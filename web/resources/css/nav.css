@@ -1,0 +1,65 @@
+.homeNavLine{
+    min-height: 45px;
+    display: block;
+    position: fixed;
+    border-bottom:1px solid #ccc;
+    top:0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    background: #DEE0D2;
+    /*background: url(../images/home/top_line_bg.png);*/
+}
+.homeNav{
+    display: block;
+    position:relative;
+    right: -50%;
+}
+.homeNav li{
+    display: block;
+    list-style: none;
+    float: left;
+    padding-top: 3px;
+    margin-left: 10px;
+    line-height: 30px;
+    cursor: pointer;
+    min-width:100px;
+    text-align: center;
+}
+.homeNav li a{
+    color:#B494AF;
+    font-size: 14px;
+    font:bold;
+    text-decoration:none;
+    font-family: '微软雅黑';
+    width:100%;
+    height: 100%;
+    display: block;
+    min-width:100px;
+}
+
+@-moz-keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+@-webkit-keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+@-o-keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+@keyframes bgShow{
+    from{ background: rgba(00,00,00,0);}
+    to{ background: rgba(00,00,00,0.5);}
+}
+.homeNav li a:hover{
+    color:#fff;
+    border-radius:3px;
+    animation: bgShow 1s;
+    -moz-animation: bgShow 1s;	/* Firefox */
+    -webkit-animation: bgShow 1s;	/* Safari 和 Chrome */
+    -o-animation: bgShow 1s;
+    background: #ccc;
+}

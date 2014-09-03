@@ -51,9 +51,12 @@ public class TestAction extends AbstractAction{
     public void home(@HornRequestParam( name = "userId")String userId,HttpServletRequest request,Map params,ModelMap modelMap){
         Map userInfo=testService.getUserInfoById(params);
         modelMap.put("userInfo",userInfo);
+        modelMap.put("catalogList",testService.queryUserCatalog(params));
     }
     @HornRequestMapping(value = "/picWall")
     public void picWall(HttpServletRequest request,Map params,ModelMap modelMap){
         modelMap.put("userList",testService.queryAllUser(params));
+
     }
+
 }

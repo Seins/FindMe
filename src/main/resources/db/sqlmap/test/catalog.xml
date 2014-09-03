@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="catalog">
+    <select id="queryCatalogByUserId" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM catalog
+        WHERE
+          USER_ID=#userId#
+    </select>
+
+    <select id="queryModulesByCatalogId" parameterClass="map" resultClass="hashMap">
+        SELECT  * FROM module
+        WHERE
+          CATALOG_ID=#catalogId#
+    </select>
+
+    <select id="queryModulesPictureList" parameterClass="map" resultClass="hashMap">
+        SELECT  * FROM picture_overview
+        WHERE
+          MODULE_ID=#moduleId#
+        ORDER BY ORDER_NO
+    </select>
+</sqlMap>

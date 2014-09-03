@@ -35,4 +35,8 @@ public class TestService {
     public List queryAllUser(Map params){
         return  baseDao.queryForList("test.queryAllUser",params);
     }
+
+    public List queryUserCatalog(Map params){
+        return baseDao.queryForList("catalog.queryCatalogByUserId",params);
+    }
 }

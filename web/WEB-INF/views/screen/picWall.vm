@@ -25,12 +25,12 @@
         var params={};
         $.post("$!{service_name}/picWall.json",params,function(data) {
             if(data.userList){
-                console.info("userList:%o",data.userList);
+
                 for(var i=0;i<data.userList.length;i++){
                     insertImg(data.userList[i]);
                 }
             }else{
-                console.error("请求失败:%o",data);
+                alert("数据请求失败！");
             }
 
         },"json");
