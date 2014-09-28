@@ -33,9 +33,9 @@ body{
 }
 .content{
     width:1000px;
-    margin:0 auto;
+    margin:20px auto;
     padding:0;
-    min-height:720px;
+    min-height:580px;
     overflow:hidden;
 }
 .content .item{

@@ -94,7 +94,7 @@ public class MainAction extends AbstractAction {
         }
         session.removeAttribute("$_LoginUser");
 
-        return RedirectView.REDIRECT_KEY + "/picWall.htm";
+        return RedirectView.REDIRECT_KEY + "/";
     }
 
     @HornRequestMapping(value = "/home")
@@ -171,8 +171,13 @@ public class MainAction extends AbstractAction {
      *
      *文件描述:
      **/
-    public void picWall(HttpServletRequest request,Map params,ModelMap modelMap){
+    public void picWall(
+            @HornRequestParam(name = SysConstant.SESSION_KEY_LOGIN_USER, scope = { ParamScope.SESSION_ATTRIBUTE }) LoginUser loginUser,
+            HttpServletRequest request,Map params,ModelMap modelMap){
         try {
+            if(CommonUtils.isNotEmpty(loginUser)){
+                modelMap.put("userLogined",true);
+            }
             modelMap.put("userList", testService.queryAllUser(params));
             this.success(modelMap);
         }catch (BizException ex){

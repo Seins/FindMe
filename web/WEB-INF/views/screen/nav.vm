@@ -1,5 +1,5 @@
 <div class="homeNavLine">
-    <p>Find Me</p>
+    <a href="/">Find Me</a>
     <ul class="homeNav">
         <li><a href="$!{service_name}/picWall.htm">照片墙</a></li>
         <li><a href="$!{service_name}/home.htm">我的主页</a></li>

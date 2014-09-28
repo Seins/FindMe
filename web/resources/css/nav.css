@@ -11,9 +11,8 @@
     overflow: hidden;
     /*background: url(../images/home/top_line_bg.png);*/
 }
-.homeNavLine p{
+.homeNavLine>a{
     padding: 0;
-    margin: 0;
     width: 200px;
     float: left;
     margin-left: 2%;
@@ -26,6 +25,7 @@
     display: block;
     position:relative;
     height:30px;
+    margin-left: 100px;
 }
 .homeNav li{
     display: block;

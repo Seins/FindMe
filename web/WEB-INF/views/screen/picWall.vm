@@ -76,7 +76,7 @@
         height:60px;
         position: relative;
     }
-    .homeNavLine p{
+    .homeNavLine a{
         color:#555;
     }
     .homeNavLine ul {

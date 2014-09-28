@@ -1,5 +1,5 @@
 <div class="homeNavLine">
-    <p>Find Me</p>
+    <a href="$!{service_name}/">Find Me</a>
     <ul class="homeNav">
         #if($!{userLogined})
             <li><a href="$!{service_name}/home.htm">返回我的首页</a></li>
