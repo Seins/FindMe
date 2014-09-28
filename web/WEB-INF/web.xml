@@ -4,7 +4,7 @@
            xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
            version="3.0">
-    <display-name>框架测试</display-name>
+    <display-name>Find Me</display-name>
     <mime-mapping>
         <extension>htc</extension>
         <mime-type>text/x-component</mime-type>
