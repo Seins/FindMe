@@ -12331,7 +12331,7 @@ UE.plugins['insertcode'] = function() {
         utils.cssRule('pre','pre{margin:.5em 0;padding:.4em .6em;border-radius:8px;background:#f8f8f8;}',
             me.document)
     });
-    me.setOpt('insertcode',{
+    me.setOpt('insertcode',UEDITOR_CONFIG.insertCodeMap||{
             'as3':'ActionScript3',
             'bash':'Bash/Shell',
             'cpp':'C/C++',
@@ -12388,7 +12388,7 @@ UE.plugins['insertcode'] = function() {
                 rng = me.selection.getRange(),
                 pre = domUtils.findParentByTagName(rng.startContainer,'pre',true);
             if(pre){
-                pre.className = 'brush:'+lang+';toolbar:false;';
+                pre.className = 'code-' + lang + ' brush:'+lang+';toolbar:false;';
             }else{
                 var code = '';
                 if(rng.collapsed){
@@ -12468,7 +12468,7 @@ UE.plugins['insertcode'] = function() {
 
                     });
                 }
-                me.execCommand('inserthtml','<pre id="coder"class="brush:'+lang+';toolbar:false">'+code+'</pre>',true);
+                me.execCommand('inserthtml','<pre id="coder"class="code-'+lang + ' brush:'+lang+';toolbar:false">'+code+'</pre>',true);
 
                 pre = me.document.getElementById('coder');
                 domUtils.removeAttributes(pre,'id');

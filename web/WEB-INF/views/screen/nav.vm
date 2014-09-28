@@ -1,8 +1,10 @@
 <div class="homeNavLine">
+    <p>Find Me</p>
     <ul class="homeNav">
         <li><a href="$!{service_name}/picWall.htm">照片墙</a></li>
-        <li><a href="$!{service_name}/home.htm?userId=1">开发者信息</a></li>
-        <li><a>关于本站</a></li>
-        <li><a>共享资料</a></li>
+        <li><a href="$!{service_name}/home.htm">我的主页</a></li>
+        <li><a href="$!{service_name}/timeTree.htm">时光轴</a></li>
+        <li><a href="$!{service_name}/config/index.htm">个人资料设置</a></li>
+        <li><a onclick="app.logout()">注销</a> </li>
     </ul>
 </div>

@@ -1,0 +1,87 @@
+#xForm_start({"id":"catalogForm", "target":"_self"})
+#xLayoutPanel_start({"debug":false,"width:":"80%", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
+#xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"right", "cellVAlign":"middle",
+"items":[
+{"value":"新增","onClick":"doNew()"},
+{"value":"修改","onClick":"doEdit()"},
+{"value":"删除","onClick":"doDelete()"}
+]
+})
+#xGrid({"colspan":1, "name":"dataGrid", "multiple":false, "dragAndDrop":true,
+"sortable":true, "height":"520px", "autoAdjust":false,"paging":true,"pageCountDefine":"10,20,30","multiline":true,
+"events":{
+"onInit":"doQuery()",
+"onRowDblClicked" : "doEdit(rid, cid)"
+},
+"columns":[
+{"dataIdx":"ID", "width":40, "title":"序号","align":"left"},
+{"dataIdx":"CATALOG_NAME", "width":100, "title":"标题","align":"left"},
+{"dataIdx":"CATALOG_DESC", "width":400, "title":"预览描述","align":"left"},
+{"dataIdx":"CATALOG_PIC", "width":160, "title":"预览图","align":"center","render":"imgRender(td,data,rowData)"},
+{"dataIdx":"CATALOG_URL", "width":360, "title":"详细页面链接","align":"left"}
+]})
+#xLayoutPanel_end
+#xForm_end
+<script>
+    function doQuery(){
+        dataGrid.clearAndLoadx("$!{service_name}/config/catalogCfg.json");
+    }
+    function doEdit(rid, cid){
+        var sdata, id;
+        if(rid){
+            sdata = dataGrid.getDataByRowId(rid);
+        }else{
+            sdata = dataGrid.getSelectedData();
+        }
+        if(!sdata){
+            alert("请先选择要修改的数据!");
+            return;
+        }
+        id = sdata.ID;
+
+        var win = xWindow.getInstance("editCatalog", {w:680, h:500});
+        win.centerOnScreen();
+        win.setModal(true);
+        win.attachURL("$!{service_name}/config/editCatalog.htm?editId=" + id);
+        win.setText("修改模块信息");
+    }
+
+    function doNew(){
+        var win = xWindow.getInstance("newCatalog", {w:680, h:500});
+        win.centerOnScreen();
+        win.setModal(true);
+        win.attachURL("$!{service_name}/config/newCatalog.htm");
+        win.setText("新建模块信息");
+    }
+
+    function doDelete(rid,cid){
+        var sdata, id;
+        if(rid){
+            sdata = dataGrid.getDataByRowId(rid);
+        }else{
+            sdata = dataGrid.getSelectedData();
+        }
+        if(!sdata){
+            alert("请先选择要修改的数据!");
+            return;
+        }
+        id = sdata.ID;
+        if(confirm("确定删除？")){
+            var params={};
+            $.post("$!{service_name}/config/deleteCatalog.json?editId="+id,params,function(data){
+                if(data.result==true){
+                    alert('删除成功!');
+                    dataGrid.reload();
+                }else{
+                    alert('删除失败:'+data.errorInfo);
+                }
+            })
+        }else{
+            return ;
+        }
+    }
+    function imgRender(td,data,rowData){
+        td.innerHTML = data ? ("<img src='"+data+"' width=150 >"):'&nbsp;';
+        td.style.padding="5px"
+    }
+</script>

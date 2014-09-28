@@ -1,0 +1,50 @@
+#xForm_start({"id":"educationForm", "target":"_self"})
+    #xLayoutPanel_start({"debug":false,"width:":"80%", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
+            #xCalendar({"colspan":1,"id":"startTime","name":"startTime","label":"入学时间","labelWidth":"120px","required":true,"value":"",
+                "width":"200px","maxDateRef":"#eDate","dateFmt":"yyyy-MM-dd"})
+            #xCalendar({"colspan":1,"id":"endTime","name":"endTime","label":"毕业时间","labelWidth":"120px","required":true,"value":"",
+                "width":"200px","minDateRef":"#bDate","dateFmt":"yyyy-MM-dd"})
+            #xTextField({"colspan":1,"id":"schoolName","name":"schoolName","width":"80%","label":"学校名称","labelWidth":"120px","value":"","required":true,"sufLabelWidth":"180px","sufLabel":"(不能超过100字)"})
+            #xCombo({"colspan":1,"id":"schoolLv","name":"schoolLv","label":"获得学历等级","required":false,"value":"","labelWidth":"120px","value":"null","width":"80%",
+                "editable":false, "showValue":false,
+                "items":[
+                    {"value":"null","text":"--请选择--"},
+                    {"value":"博士","text":"博士"},
+                    {"value":"硕士","text":"硕士"},
+                    {"value":"本科","text":"本科"},
+                    {"value":"高中","text":"高中"},
+                    {"value":"初中","text":"初中"},
+                    {"value":"小学","text":"小学"},
+                    {"value":"职校","text":"职校"},
+                    {"value":"其他","text":"其他"}
+                ]
+            })
+            #xNumberField({"colspan":1,"id":"orderNo","name":"orderNo","width":"80%","label":"排序","labelWidth":"120px","value":"","required":true,"sufLabelWidth":"180px"})
+            #xTextArea_start({"colspan":1,"id":"educationDesc","width":"80%","name":"educationDesc","colspan":1, "rowspan":5,"rows":"5", "label":"在校奖惩及其他描述","labelWidth":"120px","""required":false,"cellVAlign":"top","readOnly":false})#xTextArea_end
+            #xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"center", "cellVAlign":"middle",
+                "items":[
+                    {"value":"保存","onClick":"doSave()"}
+                ]
+            })
+    <script>
+        function doSave(){
+            var params=XComps.serializeForm('#educationForm');
+            if(params==null){
+                return;
+            }
+            $.post("$!{service_name}/config/saveNewEducationInfo.json",params,function(data){
+                if(data.result==true){
+                    alert('添加成功!');
+                    if(currentWin){
+                        currentWin.opener.dataGrid.reload();
+                        currentWin.close();
+                    }
+
+                }else{
+                    alert('添加失败:'+data.errorInfo);
+                }
+            })
+        }
+    </script>
+    #xLayoutPanel_end
+#xForm_end

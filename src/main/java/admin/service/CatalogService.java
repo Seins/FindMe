@@ -1,6 +1,4 @@
-package admin.service;/**
- * Created by 邓风森 on 2014/9/2.
- */
+package admin.service;
 
 import com.freemind.cube.server.dao.IDao;
 import org.springframework.stereotype.Service;
@@ -16,18 +14,52 @@ import java.util.Map;
  * @date: 2014/9/2 16:31
  */
 @Service("catalogService")
+/**
+ *文件名:CatalogService
+ *
+ *创建人:邓风森
+ *
+ *创建时间:2014/9/20
+ *
+ *文件描述:
+ **/
+
 public class CatalogService {
     @Resource(name="baseDao")
     IDao baseDao;
-
+    /**
+     *方法名:
+     *
+     *创建人:邓风森
+     *
+     *创建时间:2014/9/20
+     *
+     *文件描述:
+     **/
     public List queryCatalogByUserId(Map params){
         return baseDao.queryForList("catalog.queryCatalogByUserId",params);
     }
-
+    /**
+     *方法名:
+     *
+     *创建人:邓风森
+     *
+     *创建时间:2014/9/20
+     *
+     *文件描述:
+     **/
     public List queryModulesByCatalogId(Map params){
         return baseDao.queryForList("catalog.queryModulesByCatalogId",params);
     }
-
+    /**
+     *方法名:
+     *
+     *创建人:邓风森
+     *
+     *创建时间:2014/9/20
+     *
+     *文件描述:
+     **/
     public List queryModulesPictureList(Map params){
         return baseDao.queryForList("catalog.queryModulesPictureList",params);
     }

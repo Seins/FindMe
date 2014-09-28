@@ -21,7 +21,6 @@
      */
     
     var URL = window.UEDITOR_HOME_URL || getUEBasePath();
-    
     /**
      * 配置项主体。注意，此处所有涉及到路径的配置别遗漏URL变量。
      */
@@ -387,6 +386,37 @@
         //,filterRules : {}
         //,autoTransWordToList:false  //禁止word中粘贴进来的列表自动变成列表标签
         //,disabledTableInTable:true  //禁止表格嵌套
+        ,insertCodeMap : {
+            'html':'Html',
+            'js':'Javascript',
+            'xml':'Xml'
+        }
+//        ,insertCodeMap : {
+//            'as3':'ActionScript3',
+//            'bash':'Bash/Shell',
+//            'cpp':'C/C++',
+//            'css':'Css',
+//            'cf':'CodeFunction',
+//            'c#':'C#',
+//            'delphi':'Delphi',
+//            'diff':'Diff',
+//            'erlang':'Erlang',
+//            'groovy':'Groovy',
+//            'html':'Html',
+//            'java':'Java',
+//            'jfx':'JavaFx',
+//            'js':'Javascript',
+//            'pl':'Perl',
+//            'php':'Php',
+//            'plain':'Plain Text',
+//            'ps':'PowerShell',
+//            'python':'Python',
+//            'ruby':'Ruby',
+//            'scala':'Scala',
+//            'sql':'Sql',
+//            'vb':'Vb',
+//            'xml':'Xml'
+//        }
     };
 
     function getUEBasePath ( docUrl, confUrl ) {
@@ -453,5 +483,4 @@
     window.UE = {
         getUEBasePath: getUEBasePath
     };
-
 })();

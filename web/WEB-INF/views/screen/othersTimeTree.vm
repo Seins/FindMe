@@ -1,0 +1,53 @@
+<link type="text/css" rel="stylesheet" href="$!{service_name}/resources/css/timeTree.css"/>
+<script type="text/javascript" src="$!{service_name}/resources/scripts/timeTree/timeTree.js"></script>
+<!--[if lt IE 10]>
+<script type="text/javascript" src="$!{service_name}/resources/pie/PIE.js"></script>
+    <script>
+		$(document).ready(function(e){
+			 if (window.PIE) {
+				$('*').each(function() {
+					PIE.attach(this);
+				});
+			}
+		})
+	</script>
+
+<![endif]-->
+<link rel="stylesheet" href="$!{service_name}/resources/css/nav.css"/>
+<style>
+    .homeNavLine{
+        background: #659CAE;
+    }
+    .homeNavLine ul li a{
+        color: #fff !important;
+    }
+    body{
+        padding-top:70px;
+    }
+</style>
+$contain.get('/nav-others.vm')
+<div class="title">
+    <h2>这些年，他走过的……</h2>
+</div>
+<div class="content" >
+    <span class="timeTreeStartPoint">Start Point</span>
+    <span class="timeTreeMidLine"></span>
+    <ul class="timeTree">
+        #foreach($node in $timeNodeList)
+            <li>
+                <a class="item" href="$!{node.DETAIL_URL}" >
+                    <div class="timeNodeContent">
+                        <h2>$!{node.TITLE}</h2>
+                        #if($!{node.CONTENT_IMG_URL})
+                            <img src="$!{node.CONTENT_IMG_URL}"  />
+                        #end
+                        <p>$!{node.CONTENT_DESC}</p>
+                    </div>
+                    <span class="timeNodeIcon">$!{node.START_TIME}</span>
+                </a>
+            </li>
+        #end
+    </ul>
+    <!--<a href="javascript:insertMoreNode();" class="timeTreeLoadLink">More</a>-->
+</div>
+$contain.get('/footer.vm')

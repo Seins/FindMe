@@ -1,6 +1,9 @@
 <link href="$!{service_name}/resources/css/picWall.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" href="$!{service_name}/resources/fontAwesome/css/font-awesome.min.css">
 <!--[if lt IE 10]>
+<link rel="stylesheet" href="$!{service_name}/resources/fontAwesome/css/font-awesome-ie7.min.css">
 <script type="text/javascript" src="$!{service_name}/resources/pie/PIE.js"></script>
+
 <![endif]-->
 <script language="javascript">
     $(function() {
@@ -12,7 +15,8 @@
     });
 </script>
 <script>
-    var imgArray=[{"imgPath":"$!{service_name}/resources/images/home/icon1.jpg","Tag":"邓风森"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/mxjxx-11795252090.jpg","Tag":"人物"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/dmgqj-9420072925.jpg","Tag":"动漫"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/bzjj-12635108264.jpg","Tag":"极简"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/bzbjtj-9505554496.jpg","Tag":"唯美"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/qclbjn-9562500115.jpg","Tag":"汽车"},{"imgPath":"http://img0.bdstatic.com/img/image/shouye/gxpdtg462-201-02.jpg","Tag":"搞笑"}];
+    var imgArray=[];
+    var allUser=null;
     $(document).ready(function(e) {
         var height=$(window).height();
         var width=$(window).width();
@@ -24,8 +28,8 @@
         }
         var params={};
         $.post("$!{service_name}/picWall.json",params,function(data) {
-            if(data.userList){
-
+            if(data.result == true){
+                allUser=data.userList;
                 for(var i=0;i<data.userList.length;i++){
                     insertImg(data.userList[i]);
                 }
@@ -45,14 +49,72 @@
             }
         });
         //插入元素
-        var img=$("<div class='itemImg' ><img onclick='toPersonalHome("+data.ID+")' src='$!{service_name}"+data.USER_ICON+"'/><span>"+data.CHINESE_NAME+"</span></div>");
+        var img=$("<div class='itemImg' ><img onclick='toPersonalHome("+data.ID+")' src='$!{service_name}/resources/images/default_pic.png'/><span id='"+data.ID+"'>"+data.CHINESE_NAME+"</span></div>");
         $(minHeightItem).append(img);
     }
 
     function toPersonalHome(id){
-        location.href="$!{service_name}/home.htm?userId="+id
+        location.href="$!{service_name}/othersHome.htm?userId="+id;
+    }
+    function searchByKey(key){
+        var results=$('.content div').filter(function(index){
+            if(this.innerHTML.indexOf(key)<0){
+                $('.content div:eq('+index+')').fadeOut("slow");
+                return index;
+            }else{
+                $('.content div:eq('+index+')').fadeIn("slow");
+            }
+        });
+
     }
 </script>
+<link rel="stylesheet" href="$!{service_name}/resources/css/nav.css"/>
+<style>
+    .homeNavLine{
+        background: #fff;
+        opacity: 1 !important;
+        height:60px;
+        position: relative;
+    }
+    .homeNavLine p{
+        color:#555;
+    }
+    .homeNavLine ul {
+        margin-left: 80%;
+        position: relative;
+        bottom: 0;;
+    }
+    .homeNavLine ul li a{
+        color: #fff !important;
+        background:#19BB9B !important;
+    }
+
+    .homeNavLine ul li a:hover{
+        color:#000!important;
+        animation:  1s;
+        -moz-animation:  1s;	/* Firefox */
+        -webkit-animation:  1s;	/* Safari 和 Chrome */
+        -o-animation:  1s;
+    }
+    .footer{
+        border-color:#fff !important;
+    }
+    .companyInfo{
+        border-color:#fff !important;
+    }
+    .companyInfo p{
+        color:#fff !important;
+
+    }
+</style>
+$contain.get('/nav-others.vm')
+<div class="keySearch">
+    <div class="searchDiv " >
+        <i class="icon-search"></i>
+        <input type="text" name="keyWord" id="keyWord" placeholder="Find Me"  onkeyup="searchByKey(this.value)" ></input>
+    </div>
+</div>
 <div class="content">
 
 </div>
+$contain.get('/footer.vm')

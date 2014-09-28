@@ -29,8 +29,10 @@ function _initNS(space){
 	}
 	
 	/**
-	 * XComps 工具类
-	 * 负责对所有的注册组件进行初始化与管理，
+	 * XComps 工具类
+
+	 * 负责对所有的注册组件进行初始化与管理，
+
 	 * 组件通过XComps.getComp()方法获取组件对象
 	 * @class
 	 */
@@ -54,7 +56,8 @@ function _initNS(space){
 		extend : function(subClass,supClass){
 	    var F = function(){};
 	    F.prototype = supClass.prototype;
-	    //通过空函数避免父类可能存在的大量初始化运算
+	    //通过空函数避免父类可能存在的大量初始化运算
+
 	    subClass.prototype = new F();
 	    subClass.prototype.constructor = subClass;
 	    subClass.superClass = supClass.prototype; 
@@ -74,9 +77,11 @@ function _initNS(space){
 		},
 		
 		/** 
-		 * XComps 初始化函数, 已自动注册到 $(document).ready()中， 无需手工调用，完成组件的初始化工作
+		 * XComps 初始化函数, 已自动注册到 $(document).ready()中， 无需手工调用，完成组件的初始化工作
+
 		 * 当组件初始化完成后会调用，通过XComps.onReady()方法注册的函数，
-		 * <font color="red">特别注意： 如果需要在页面初始化后完成一些组件的状态设置之类的工作，
+		 * <font color="red">特别注意： 如果需要在页面初始化后完成一些组件的状态设置之类的工作，
+
 		 * 最好不要使用$(document).ready(function(){...}),而改为使用XComps.onReady(function(){...});
 		 * 以免函数调用时组件还未初始化</font>
 		 * @function
@@ -161,7 +166,8 @@ function _initNS(space){
 		},
 		
 		/**
-		 * 通过type获取组件数组, type同组件对象的 getType()方法返回值
+		 * 通过type获取组件数组, type同组件对象的 getType()方法返回值
+
 		 * @param {String} type 组件的type
 		 * @return {Array} 组件数组， 如果未找到返回空数组
 		 */
@@ -182,7 +188,8 @@ function _initNS(space){
 		
 		/**
 		 * 工具方法，依据String 生成Function对象(仅供组件开发人员使用)
-		 * @param {String} funcStr 函数内容字符串
+		 * @param {String} funcStr 函数内容字符串
+
 		 * @return {Function} 如果为函数名返回已定义的函数对象，其他返回包启函数内容的匿名函数，异常返回undefined
 		 */
 		_evalFunction: function(funcStr){
@@ -213,7 +220,8 @@ function _initNS(space){
 		
 		/**
 		 * 工具方法，自动拼接URL，将自动判断拼接时使用"&"还是"?"
-		 * @param {String} url 原url字符串
+		 * @param {String} url 原url字符串
+
 		 * @param {String|Object} params 参数字符串，或参数Object对象（使用{k:v,k2:v2}方法定义的对象)
 		 * @return {String} 返回拼接后的URL
 		 */
@@ -276,7 +284,8 @@ function _initNS(space){
 	 * 抽象组件对象类(仅供组件开发人员使用)
 	 * @class
 	 * @constructor
-	 * @param {String} type 组件的类型
+	 * @param {String} type 组件的类型
+
 	 * @param {Element} el 组件DOM元素
 	 * @param {String} id 组件的ID, 为空自动生成
 	 * @param {String} name 组件name, 为空自动生成
@@ -292,7 +301,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取组件的类型
+	 * 获取组件的类型
+
 	 * @return {String} 组件类型
 	 */
 	xAbsComp.prototype.getType = function(){
@@ -327,7 +337,8 @@ function _initNS(space){
 	 * 抽象的INPUT组件对象类(仅供组件开发人员使用)
 	 * @class
 	 * @extends xAbsComp
-	 * @param {String} type 组件的类型
+	 * @param {String} type 组件的类型
+
 	 * @param {Element} el 组件DOM元素
 	 * @param {String} id 组件的ID, 为空自动生成
 	 * @param {String} name 组件name, 为空自动生成
@@ -348,7 +359,8 @@ function _initNS(space){
 	 * 设置组件可用时的CSS(仅供组件开发人员使用)
 	 * @private
 	 * @param {Boolean} bool 组件是否可用
-	 * @param {String} filter 获取InputEl时的filter，默认为空
+	 * @param {String} filter 获取InputEl时的filter，默认为空
+
 	 */
 	xAbsInput.prototype._setDisabledCss = function(bool, filter){
 		var obj = this.getInputEl(filter);
@@ -369,7 +381,8 @@ function _initNS(space){
 	 * 设置组件只读时的CSS(仅供组件开发人员使用)
 	 * @private
 	 * @param {Boolean} bool 组件是否只读
-	 * @param {String} filter 获取InputEl时的filter，默认为空
+	 * @param {String} filter 获取InputEl时的filter，默认为空
+
 	 */
 	xAbsInput.prototype._setReadOnlyCss = function(bool, filter){
 		var obj = this.getInputEl(filter);
@@ -404,7 +417,8 @@ function _initNS(space){
 	
 	/**
 	 * 获取Input对象
-	 * @param {String} 过滤filter, 可选，默认为空。
+	 * @param {String} 过滤filter, 可选，默认为空。
+
 	 * @return {jQueryObject} Input的jQuery Object对象或对象数组(如：radio)
 	 */
 	xAbsInput.prototype.getInputEl = function(filter){
@@ -412,7 +426,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取组件后部的附加对象
+	 * 获取组件后部的附加对象
+
 	 * @return {jQueryObject}
 	 */
 	xAbsInput.prototype.getAppendixEl = function(){
@@ -433,7 +448,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件Input值
+	 * 设置组件Input值
+
 	 * @param {Object} val 要设置的值(非String使用toString()值)
 	 * @param {String} filter 要设置的Input对象filter, 同 getInputEl, 可选, 默认为空
 	 */
@@ -443,9 +459,11 @@ function _initNS(space){
 	};
 	
 	/**
-	 * 获取组件Input的值
+	 * 获取组件Input的值
+
 	 * @param {String} filter 同getInputEl的filter, 可选，
-	 * @return {String} 组件的Input值，当组件为多个时返回第一个的值
+	 * @return {String} 组件的Input值，当组件为多个时返回第一个的值
+
 	 */
 	xAbsInput.prototype.getValue = function(filter){
 		var obj = filter ? this.getInputEl().filter(filter): this.getInputEl();
@@ -467,7 +485,8 @@ function _initNS(space){
 	
 	/**
 	 * 获取组件标签内容
-	 * @return {String} 组件的标签内容
+	 * @return {String} 组件的标签内容
+
 	 */
 	xAbsInput.prototype.getLabel = function(){
 	  var lbl = this.getLabelEl();;
@@ -480,7 +499,8 @@ function _initNS(space){
 	};
 	
 	/**
-	 * 设置组件的启用可用
+	 * 设置组件的启用可用
+
 	 * @param {Boolean} bool  是否启用
 	 * @param {String} filter  可选，同getInputEl()的filter
 	 */
@@ -501,7 +521,8 @@ function _initNS(space){
 	}
 	
 	/** 
-	 * 设置组件只读状态
+	 * 设置组件只读状态
+
 	 * @param {Boolean} bool 是否只读
 	 * @param {String} filter  可选，同getInputEl()的filter
 	 */
@@ -522,7 +543,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件的可见状态
+	 * 设置组件的可见状态
+
 	 * @param {Boolean} bool 组件是否可见
 	 * @param {String} filter  可选，同getInputEl()的filter
 	 */
@@ -532,7 +554,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 查询组件的可见状态
+	 * 查询组件的可见状态
+
 	 * @param {String} filter  可选，同getInputEl()的filter
 	 * @return {Boolean} 组件是否可见
 	 */
@@ -555,7 +578,8 @@ function _initNS(space){
 	 * Selector的抽象类，继承xAbsInput(仅供组件开发人员使用)
 	 * @class
 	 * @extends xAbsInput
-	 * @param {String} type 组件的类型
+	 * @param {String} type 组件的类型
+
 	 * @param {Element} el 组件DOM元素
 	 * @param {String} id 组件的ID, 为空自动生成
 	 * @param {String} name 组件name, 为空自动生成
@@ -666,7 +690,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取选择对象框对象
+	 * 获取选择对象框对象
+
 	 * @return {jQueryObject}
 	 */
 	xAbsSelector.prototype.getSelectorBoxEl = function(){
@@ -682,7 +707,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取弹出层对象
+	 * 获取弹出层对象
+
 	 * @return {jQueryObject}
 	 */
 	xAbsSelector.prototype.getPopupEl = function(){
@@ -698,7 +724,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件的启用状态
+	 * 设置组件的启用状态
+
 	 * @param {Boolean} bool 是否启用
 	 */
 	xAbsSelector.prototype.setDisabled = function(bool){
@@ -717,7 +744,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件的只读状态
+	 * 设置组件的只读状态
+
 	 * @param {Boolean} bool 组件是否只读
 	 */
 	xAbsSelector.prototype.setReadOnly = function(bool){
@@ -734,16 +762,20 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 查询组件是否可编辑
-	 * @return {Boolean} 是否可编辑
+	 * 查询组件是否可编辑
+
+	 * @return {Boolean} 是否可编辑
+
 	 */
 	xAbsSelector.prototype.isEditable = function(){
 		return this.editable;
 	}
 	
 	/** 
-	 * 设置是否可编辑
-	 * @param {Boolean} bool 是否可编辑
+	 * 设置是否可编辑
+
+	 * @param {Boolean} bool 是否可编辑
+
 	 */
 	xAbsSelector.prototype.setEditable = function(bool){
 		this.editable = bool;
@@ -764,7 +796,8 @@ function _initNS(space){
 	
 	//== xLabel组件 =============================================
 	/**
-	 * xLabel组件对象类(type=xc-comp-xlabel)，
+	 * xLabel组件对象类(type=xc-comp-xlabel)，
+
 	 * 组件对象由XComps负责构造，通过XComps.getComp()获取。<br>
 	 * 对应宏#xLabel <ul>
 	 * 		<li>id: {String} 可选, ID</li>
@@ -812,7 +845,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件Text值
+	 * 设置组件Text值
+
 	 * @param {Object} val 要设置的值(非String使用toString()值)
 	 */
 	xLabel.prototype.setText = function(val){
@@ -822,7 +856,8 @@ function _initNS(space){
 	};
 	
 	/**
-	 * 获取组件Text的值
+	 * 获取组件Text的值
+
 	 * @return {String} 
 	 */
 	xLabel.prototype.getText = function(){
@@ -845,7 +880,8 @@ function _initNS(space){
 	
 	/**
 	 * 获取组件标签内容
-	 * @return {String} 组件的标签内容
+	 * @return {String} 组件的标签内容
+
 	 */
 	xLabel.prototype.getLabel = function(){
 	  var lbl = this.getLabelEl();;
@@ -853,7 +889,8 @@ function _initNS(space){
 	};
 	
 	/**
-	 * 设置组件的启用可用
+	 * 设置组件的启用可用
+
 	 * @param {Boolean} bool  是否启用
 	 */
 	xLabel.prototype.setDisabled = function(bool){
@@ -871,7 +908,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件的可见状态
+	 * 设置组件的可见状态
+
 	 * @param {Boolean} bool 组件是否可见
 	 */
 	xLabel.prototype.setVisible = function(bool){
@@ -880,7 +918,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 查询组件的可见状态
+	 * 查询组件的可见状态
+
 	 * @return {Boolean} 组件是否可见
 	 */
 	xLabel.prototype.isVisible = function(){
@@ -901,7 +940,8 @@ function _initNS(space){
 
 	//== 单按钮 ===============================================
 	/**
-	 * 单个按钮组件(type=xc-comp-button)，
+	 * 单个按钮组件(type=xc-comp-button)，
+
 	 * 组件对象由XComps负责构造，通过XComps.getComp()获取。<br>
 	 * 对应宏#xButton <ul>
 	 * 		<li>id: {String} 可选, ID</li>
@@ -951,7 +991,8 @@ function _initNS(space){
 	//== 按钮组 ========================================================
 	/**
 	 * 按钮组(type=xc-comp-buttons)，包含多个按钮，
-	 * 组件对象由XComps构造，通过XComps.getComp()获取。
+	 * 组件对象由XComps构造，通过XComps.getComp()获取。
+
 	 * <br>对应宏#xButtons <ul>
 	 * 		<li>id: {String} 可选, ID</li>
 	 * 		<li>name: {String} 可选, Name</li>
@@ -1065,7 +1106,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取Input值
+	 * 获取Input值
+
 	 * @return {String} 
 	 */
 	xHidden.prototype.getValue = function(){
@@ -1073,7 +1115,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置Input值
+	 * 设置Input值
+
 	 * @param {String} value
 	 */
 	xHidden.prototype.setValue = function(value){
@@ -1269,7 +1312,8 @@ function _initNS(space){
 		
 	//== radio组件 =============================================
 	/**
-	 * 单选组组件(type=xc-comp-radio)，存在多个单选钮，同组内选中状态互斥
+	 * 单选组组件(type=xc-comp-radio)，存在多个单选钮，同组内选中状态互斥
+
 	 * 组件对象由XComps构造，通过XComps.getComp()获取
 	 * <br>对应宏#xRadio <ul>
 	 * 		<li>id: {String} 可选, ID</li>
@@ -1325,7 +1369,8 @@ function _initNS(space){
 	XComps.extend(xRadio, xAbsInput);
 	
 	/**
-	 * 获取单选组组件的包围元素
+	 * 获取单选组组件的包围元素
+
 	 * @return {jQueryObject}
 	 */
 	xRadio.prototype.getBoxEl = function(){
@@ -1353,7 +1398,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件的只读状态
+	 * 设置组件的只读状态
+
 	 * @param {Boolean} bool
 	 */
 	xRadio.prototype.setReadOnly = function(bool){
@@ -1371,7 +1417,8 @@ function _initNS(space){
 	
 	/**
 	 * 设置组件的选中状态, 如果未设置filter，默认设置第一个单选钮的状态，
-	 * 如需设置指定单选钮的状态，可以使用filter, 如下：
+	 * 如需设置指定单选钮的状态，可以使用filter, 如下：
+
 	 * @example  XComps.getComp("option").setChecked(false, "[name='opt1']")
 	 * @param {Boolean} bool 是否选中
 	 * @param {String} filter  可选，同getInputEl()的filter
@@ -1393,7 +1440,8 @@ function _initNS(space){
 	
 	/**
 	 * 查询单选钮是否已选中，如果未设置filter，默认查询第一个单选钮的选中状态，
-	 * 如需查询指定单选钮的状态，可以使用filter, 如下：
+	 * 如需查询指定单选钮的状态，可以使用filter, 如下：
+
 	 * @example  XComps.getComp("option").isChecked("[name='opt1']")
 	 * @param {String} filter  可选，同getInputEl()的filter
 	 * @return {Boolean}
@@ -1406,9 +1454,12 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件的值，值必须为组件内某个单选钮的值，相应的该单选钮奖被选中，
-	 * 否则取消所有单选钮的选中状态
-	 * @param {String} val 可选，组件内某个单选钮的值
+	 * 设置组件的值，值必须为组件内某个单选钮的值，相应的该单选钮奖被选中，
+
+	 * 否则取消所有单选钮的选中状态
+
+	 * @param {String} val 可选，组件内某个单选钮的值
+
 	 */
 	xRadio.prototype.setValue = function(val){
 		var inp = this.getInputEl();
@@ -1574,7 +1625,8 @@ function _initNS(space){
 	
 	/**
 	 * 设置组件的选中状态, 如果未设置filter，默认设置第一个复选框的状态，
-	 * 如需设置指定单选钮的状态，可以使用filter, 如下：
+	 * 如需设置指定单选钮的状态，可以使用filter, 如下：
+
 	 * @example  XComps.getComp("option").setChecked(false, "[name='opt1']")
 	 * @param {Boolean} bool 是否选中
 	 * @param {String} filter  可选，同getInputEl()的filter
@@ -1596,7 +1648,8 @@ function _initNS(space){
 	
 	/**
 	 * 查询复选框是否已选中，如果未设置filter，默认查询第一个单选钮的选中状态，
-	 * 如需查询指定单选钮的状态，可以使用filter, 如下：
+	 * 如需查询指定单选钮的状态，可以使用filter, 如下：
+
 	 * @example  XComps.getComp("option").isChecked("[name='opt1']")
 	 * @param {String} filter  可选，同getInputEl()的filter
 	 * @return {Boolean}
@@ -1610,7 +1663,8 @@ function _initNS(space){
 	
 	/**
 	 * 设置组件的值，根据值设置相应的该复选框选中状态，
-	 * 否则取消所有复选框的选中状态
+	 * 否则取消所有复选框的选中状态
+
 	 * @example XComps.getComp("option").setValue("opt1,opt2,opt3");
 	 * @example XComps.getComp("option").setValue("opt1|opt2|opt3","|");
 	 * @param {String} val 可选，多个值用分隔符分开(默认为",")
@@ -1640,7 +1694,8 @@ function _initNS(space){
 	 * var vals = XComps.getComp("option").getValue(); 
 	 * var str = vals.join("#"); 
 	 * 假设vals=[1,2,3], 则str为=1#2#3
-	 * @return {Array} 选中的值构成的数组，
+	 * @return {Array} 选中的值构成的数组，
+
 	 */
 	xCheckbox.prototype.getValue = function(){
 		var inp = this.getInputEl();
@@ -1696,7 +1751,8 @@ function _initNS(space){
 	//== 日期选择框 ====================================
 	/**
 	 * 日期选择框(type=xc-comp-calendar),
-	 * 组件对象由XComps构造，通过XComps.getComp()获取。
+	 * 组件对象由XComps构造，通过XComps.getComp()获取。
+
 	 * <br>对应宏#xCalendar <ul>
 	 * 		<li>id: {String} 可选, ID</li>
 	 * 		<li>name: {String} 可选, Name</li>
@@ -1745,7 +1801,8 @@ function _initNS(space){
 		xCalendar.superClass.constructor.call(this, "xc-comp-calendar", el, id, name);
 		var inp = this.getInputEl();
 		var trg = this.getTriggerEl();
-		//读取默认的日期配置信息
+		//读取默认的日期配置信息
+
 		this.dateConfig = {}; 
 		var cfgStr = inp.attr("_dateCfg");
 		if(cfgStr){
@@ -2017,7 +2074,8 @@ function _initNS(space){
 			this.textHolderEl = inp;
 			this.valueHolderEl = inp.prev();
 		}
-		//值引用对象
+		//值引用对象
+
 		if(inp.attr("valueRef")){
 			this.valueRefEl = $(inp.attr("valueRef"));
 		}
@@ -2026,7 +2084,8 @@ function _initNS(space){
 		}
 		this.popupContentEl = popup.find("div.xc-comp-combo-content");
 		this.popupControlEl = popup.find("div.xc-comp-combo-control");
-		//初始化数据列表
+		//初始化数据列表
+
 		var initVal = this.valueHolderEl.val();
 		var comp=this;
 		var lis = this.getListEl();
@@ -2065,7 +2124,8 @@ function _initNS(space){
 		}else if(this.isSelectFirst){
 			this.selectFirst();
 		}
-		//初始化事件监听
+		//初始化事件监听
+
 		trg.on("click",{combo:this}, xCombo._onShow);
 		inp.on("focus click",{combo:this}, xCombo._onShow);
 		inp.on("keydown",{combo:this}, xCombo._onKeyDown);
@@ -2113,7 +2173,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取弹出层对象
+	 * 获取弹出层对象
+
 	 * @return {jQueryObject}
 	 */
 	xCombo.prototype.getPopupContentEl = function(){
@@ -2137,7 +2198,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 选中列表项的第一项
+	 * 选中列表项的第一项
+
 	 */
 	xCombo.prototype.selectFirst = function(){
 		if(this.dataList.length>0){
@@ -2147,7 +2209,8 @@ function _initNS(space){
 	}
 
 	/**
-	 * 查询是否多选
+	 * 查询是否多选
+
 	 * @return {Boolean}
 	 */
 	xCombo.prototype.isMultiple = function(){
@@ -2155,7 +2218,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 查询是否已弹出
+	 * 查询是否已弹出
+
 	 * @return {Boolean}
 	 */
 	xCombo.prototype.isPopup = function(){
@@ -2258,7 +2322,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取选择框的显示值
+	 * 获取选择框的显示值
+
 	 * @return {String}
 	 */
 	xCombo.prototype.getText = function(){
@@ -2266,8 +2331,10 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 从URL获取JSON数据，根据option中指定的dataKey,valueKey,textKey来解析数据构造列表项(注意该方法会先清空列表项)，
-	 * 如果dataKey,valueKey,textKey已在组件宏定义时已指定可以省略，如下：
+	 * 从URL获取JSON数据，根据option中指定的dataKey,valueKey,textKey来解析数据构造列表项(注意该方法会先清空列表项)，
+
+	 * 如果dataKey,valueKey,textKey已在组件宏定义时已指定可以省略，如下：
+
 	 * @example XComps.getComp("city").loadData("getCity.json");
 	 * @example XComps.getComp("city").loadData("getCity.json", {"prov":"059"});
 	 * @example XComps.getComp("city").loadData("getCity.json", {"prov":"059"}, {"dataKey":"cityList", "valueKey":"cityCode", "textKey":"cityName"});
@@ -2276,7 +2343,8 @@ function _initNS(space){
 	 * @param {Map} params 可选，附加到URL的参数，如：{"parentId":11, "type":"xx"}
 	 * @param {Map} option 可选，指定的dataKey,valueKey,textKey的参数对象，如：{"dataKey":"cityList", "valueKey":"cityCode", "textKey":"cityName"}
 	 * @param {Function} callback 可选，回调函数
-	 * @param {String} orgVal 可选， 数据加载完闭后，选择框选中的值
+	 * @param {String} orgVal 可选， 数据加载完闭后，选择框选中的值
+
 	 */
 	xCombo.prototype.loadData = function(url, params, option, callback, orgVal, noClear){
 		var combo=this, dataKey=this.dataKey, valueKey=this.valueKey, textKey=this.textKey, titleKey=this.titleKey;
@@ -2345,7 +2413,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取当前选定的数据对象
+	 * 获取当前选定的数据对象
+
 	 * @param {Map} 返回key值对应的数据对象，未找到返回null
 	 */
 	xCombo.prototype.getSelectedData = function(){
@@ -2362,7 +2431,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取当前选定的数据对象数组
+	 * 获取当前选定的数据对象数组
+
 	 * @param {Map} 返回key值对应的数据对象，未找到返回null
 	 */
 	xCombo.prototype.getSelectedDatas = function(){
@@ -2370,7 +2440,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 添加第一个空项
+	 * 添加第一个空项
+
 	 */
 	xCombo.prototype.addFirstNull = function(){
 		var val={};
@@ -2403,7 +2474,8 @@ function _initNS(space){
 	 * @example addData({"value":"0591", "text":"福州"});
 	 * @example addData([{"value":"0591", "text":"福州"},{"value":"0592", "text":"厦门"}]);
 	 * @param {String|Map|Array} data
-	 * @param (String}  可选， 当data为String时，text为该data对应的显示
+	 * @param (String}  可选， 当data为String时，text为该data对应的显示
+
 	 */
 	xCombo.prototype.addData = function(data, text, title){
 		var len = this.dataList.length;
@@ -2454,7 +2526,8 @@ function _initNS(space){
 	 * @example removeData("0591");
 	 * @example removeData({"value":"0591"});
 	 * @example removeData(["0591", "0592", "0593"]);
-	 * @param {String|Map|Array} 要移除的列表项
+	 * @param {String|Map|Array} 要移除的列表项
+
 	 * @return {Integer} 成功移除的列表项个数
 	 */
 	xCombo.prototype.removeData = function(data){
@@ -2487,7 +2560,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 显示弹出层
+	 * 显示弹出层
+
 	 */
 	xCombo.prototype.showPopup = function(){
 		var isPop = this.isPopup();
@@ -2547,7 +2621,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 隐藏弹出层
+	 * 隐藏弹出层
+
 	 */
 	xCombo.prototype.hidePopup = function(inp, box, popup, trg){
 		var popup = this.getPopupEl();
@@ -2853,20 +2928,27 @@ function _initNS(space){
 	
 	//== DHTMX Window的封装 ================================
 	/**
-	 * DHTMX Window的封装
-	 * 直接通过xWindow.getInstance() 构建对象，
-	 * DHTMLX Window对象的方法及说明请参见DHTMLX帮助文档。
+	 * DHTMX Window的封装
+
+	 * 直接通过xWindow.getInstance() 构建对象，
+
+	 * DHTMLX Window对象的方法及说明请参见DHTMLX帮助文档。
+
 	 * @class
 	 */
 	xWindow = {};
 	
 	/**
-	 * 获取一个DHTMLX Window实例，默认使用最顶层窗口来构建, 如果已存该ID的实例，则返回该实例。
-	 * 当DHX window内容为IFRAME时，会在iframe中的window中注入currentWin 指向当前窗口，
+	 * 获取一个DHTMLX Window实例，默认使用最顶层窗口来构建, 如果已存该ID的实例，则返回该实例。
+
+	 * 当DHX window内容为IFRAME时，会在iframe中的window中注入currentWin 指向当前窗口，
+
 	 * currentWin.opener 为调用xWindow.getInstance()时的window， 
 	 * currentWin.parent 为window.top (最顶层窗口，如果设置了notTop则同currentWin.opener)
-	 * @param {String} id  可选， 为空时自动生成
-	 * @param {Map} opt 可选，窗口配置对象，如：{"title":"提示窗口"} 支持以下配置：
+	 * @param {String} id  可选， 为空时自动生成
+
+	 * @param {Map} opt 可选，窗口配置对象，如：{"title":"提示窗口"} 支持以下配置：
+
 	 * 	<ul>
 	 * 		<li>x,y,w,h: 窗口的x,y与宽高,</li>
 	 * 		<li>title: (String)标题栏文本, 默认""</li>
@@ -2878,7 +2960,8 @@ function _initNS(space){
 	 * 		<li>modal: (Boolean)是否为模态窗口, 默认true</li>
 	 * 		<li>closeOnEsc : (Boolean)是否按ESC关闭, 默认为true</li>
 	 * 	</ul>
-	 * @param {Object} ref 可选，引用对象，如果有，稍后可通过Window.invoker获取该对象
+	 * @param {Object} ref 可选，引用对象，如果有，稍后可通过Window.invoker获取该对象
+
 	 * @param {Boolean} notTop 可选，默认窗口是建立在window.top上，设为false， 则建立在当前window
 	 * @return {Object} DHTMLX 的一个window实例
 	 */
@@ -3043,7 +3126,8 @@ function _initNS(space){
 		}
 		this.onReturn = XComps._evalFunction(inp.attr("onReturn"));
 		this.valueHolderEl = inp.prev();
-		//初始化事件监听
+		//初始化事件监听
+
 		inp.on("click",{popCombo:this}, xPopCombo._onShow);
 		trg.on("click",{popCombo:this}, xPopCombo._onShow);
 	}
@@ -3065,8 +3149,10 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置组件值
-	 * @param {String} val 隐藏域的值
+	 * 设置组件值
+
+	 * @param {String} val 隐藏域的值
+
 	 * @param {String} text 显示的值，可选，为空时，显示值同val
 	 */
 	xPopCombo.prototype.setValue = function(val, text){
@@ -3075,7 +3161,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取组件值，如果设置了 submitHidden 则返回隐藏域值，否则返回显示值
+	 * 获取组件值，如果设置了 submitHidden 则返回隐藏域值，否则返回显示值
+
 	 * @return {String}
 	 */
 	xPopCombo.prototype.getValue = function(){
@@ -3087,7 +3174,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置显示值
+	 * 设置显示值
+
 	 * @param {String} lbl 
 	 */
 	xPopCombo.prototype.setText = function(lbl){
@@ -3096,7 +3184,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取显示值
+	 * 获取显示值
+
 	 * @return {String}
 	 */
 	xPopCombo.prototype.getText = function(){
@@ -3105,7 +3194,8 @@ function _initNS(space){
 	
 	/**
 	 * 创建并显示弹出窗口，默认点击组件的触发器是自动调用，
-	 * 触发事件onBeforePopup, 事件函数返回false，可以取消窗口弹出
+	 * 触发事件onBeforePopup, 事件函数返回false，可以取消窗口弹出
+
 	 * 解发事件onPopup, 如果组件设置了dataUrl,且事件函数不是返回false，则自动在win上调用attachURL()
 	 */
 	xPopCombo.prototype.showPopup = function(){
@@ -3166,7 +3256,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 设置返回值，触发onReturn事件，
+	 * 设置返回值，触发onReturn事件，
+
 	 * 所有传入的参数传入到onReturn事件函数进行处理
 	 * @param {Any} 任意个数与类型的参数，将传入onReturn事件函数进行处理
 	 */
@@ -3203,7 +3294,8 @@ function _initNS(space){
 
 	/**
 	 * DHTMLX Grid包装类（dhtmlXGridObject更多操作方法及说明请参见DHTMLX帮助文档)
-	 * 组件对象由XComps构造，可以通过XComps.getComp()获取对象实例(dhtmlXGridObject)。
+	 * 组件对象由XComps构造，可以通过XComps.getComp()获取对象实例(dhtmlXGridObject)。
+
 	 * <br>对应宏#xGrid<ul>
 	 * 		<li>id: {String} 可选, ID</li>
 	 * 		<li>name: {String} 可选, Name</li>
@@ -3277,7 +3369,8 @@ function _initNS(space){
    *			{"dataIdx":"text", "title":"名称"},
    *			{"dataIdx":"order", "width":180, "title":"排序", "type":"ron", "align":"right", "format":"￥0,000.00", "render":"gridColRender(td,data,rowData)"},
    *			{"dataIdx":"url", "width":200, "title":"URL", "align":"right"}]})
-   *  脚本：
+   *  脚本：
+
    *  function gridInit(){
 	 *		testGrid.loadx("$!{service_name}/test.json");
 	 *		testGrid.attachEvent("onRowSelect",function(rid, cid){...});
@@ -3345,7 +3438,8 @@ function _initNS(space){
 	
 	/**
 	 * DHTMLX Tree包装类（dhtmlXTreeObject更多操作方法及说明请参见DHTMLX帮助文档)
-	 * 组件对象由XComps构造，可以通过XComps.getComp()获取对象实例(dhtmlXTreeObject)。
+	 * 组件对象由XComps构造，可以通过XComps.getComp()获取对象实例(dhtmlXTreeObject)。
+
 	 * <br>对应宏#xTree<ul>
 	 * 		<li>id: {String} 可选, ID</li>
 	 * 		<li>name: {String} 可选, Name</li>
@@ -3390,7 +3484,8 @@ function _initNS(space){
 	 * 		</li>
 	 * </ul>
 	 * @example <pre>
-	 *  静态加载
+	 *  静态加载
+
 	 * 	#xTree({"rootId":"200000",  "iconPath":"$!{service_name}/resources/images/", "leafImgKey":"icon"
 	 *		"checkable":true, "checkRelative":true, "treeLine":true, "items":$dict.getDicts("appMenu"),
 	 *		"events":{
@@ -3424,7 +3519,8 @@ function _initNS(space){
 	 *		var tree = this;
 	 *		//获取当前选中(单击选中)项ID
 	 *		alert("SelectedId=" + tree.getSelectedItemId());
-	 *		//获取当前选中(单击选中)项数据
+	 *		//获取当前选中(单击选中)项数据
+
 	 *		alert("Selected=" + $.toJSONString(tree.getSelectedData()));
 	 *		//获取复选框选中项数据(包含三态节点)
 	 *		alert("Checked=" + $.toJSONString(tree.getCheckedBranchDatas()));
@@ -3581,7 +3677,8 @@ function _initNS(space){
 			this.textHolderEl = inp;
 			this.valueHolderEl = inp.prev();
 		}
-		//值引用对象
+		//值引用对象
+
 		if(inp.attr("valueRef")){
 			this.valueRefEl = $(inp.attr("valueRef"));
 		}
@@ -3589,15 +3686,18 @@ function _initNS(space){
 			this.textRefEl = $(inp.attr("textRef"));
 		}
 		
-		//初始化数据列表
+		//初始化数据列表
+
 		var initVal = this.valueHolderEl.val();
 
-		//初始化值
+		//初始化值
+
 		if(initVal){
 			this.setValue(initVal);
 		}
 		
-		//初始化事件监听
+		//初始化事件监听
+
 		trg.on("click",{combo:this}, xTreeCombo._onShow);
 		inp.on("focus click",{combo:this}, xTreeCombo._onShow);
 		inp.on("keydown",{combo:this}, xTreeCombo._onKeyDown);
@@ -3638,7 +3738,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取弹出层对象
+	 * 获取弹出层对象
+
 	 * @return {jQueryObject}
 	 */
 	xTreeCombo.prototype.getPopupContentEl = function(){
@@ -3654,7 +3755,8 @@ function _initNS(space){
 	}
 
 	/**
-	 * 查询是否多选
+	 * 查询是否多选
+
 	 * @return {Boolean}
 	 */
 	xTreeCombo.prototype.isMultiple = function(){
@@ -3662,7 +3764,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 查询是否已弹出
+	 * 查询是否已弹出
+
 	 * @return {Boolean}
 	 */
 	xTreeCombo.prototype.isPopup = function(){
@@ -3764,7 +3867,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取选择框的显示值
+	 * 获取选择框的显示值
+
 	 * @return {String}
 	 */
 	xTreeCombo.prototype.getText = function(){
@@ -3772,8 +3876,10 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 从URL获取JSON数据，根据option中指定的dataKey,valueKey,textKey来解析数据构造列表项(注意该方法会先清空列表项)，
-	 * 如果dataKey,valueKey,textKey,pidKey已在组件宏定义时已指定可以省略，如下：
+	 * 从URL获取JSON数据，根据option中指定的dataKey,valueKey,textKey来解析数据构造列表项(注意该方法会先清空列表项)，
+
+	 * 如果dataKey,valueKey,textKey,pidKey已在组件宏定义时已指定可以省略，如下：
+
 	 * @example XComps.getComp("city").loadData("getCity.json");
 	 * @example XComps.getComp("city").loadData("getCity.json", {"prov":"059"});
 	 * @example XComps.getComp("city").loadData("getCity.json", {"prov":"059"}, {"dataKey":"cityList", "valueKey":"cityCode", "textKey":"cityName"});
@@ -3782,7 +3888,8 @@ function _initNS(space){
 	 * @param {Map} params 可选，附加到URL的参数，如：{"parentId":11, "type":"xx"}
 	 * @param {Map} option 可选，指定的dataKey,valueKey,textKey的参数对象，如：{"dataKey":"cityList", "valueKey":"cityCode", "textKey":"cityName"}
 	 * @param {Function} callback 可选，回调函数
-	 * @param {String} orgVal 可选， 数据加载完闭后，选择框选中的值
+	 * @param {String} orgVal 可选， 数据加载完闭后，选择框选中的值
+
 	 */
 	xTreeCombo.prototype.loadData = function(url, params, option, callback, orgVal){
 		var combo=this, tree=this.tree;
@@ -3861,7 +3968,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 获取当剪选定的数据值对象数组
+	 * 获取当剪选定的数据值对象数组
+
 	 * @param {String} key (可选， 指定返回值对象中key的属性, 未指定返回整个Map)
 	 * @param {Array<Map>|Array<Others>} 返回key值对应的数据对象数组，未找到返回null
 	 */
@@ -3870,7 +3978,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 添加数据到树中，数据解析会依据树的idKey,pidKey,textKey 等设置（功能同树的_processJSONX()）
+	 * 添加数据到树中，数据解析会依据树的idKey,pidKey,textKey 等设置（功能同树的_processJSONX()）
+
 	 * @example addData({"id":"0591", "pid":"059", "text":"福州"});
 	 * @example addData([{"id":"0591", "pid":"059", "text":"福州"},{"id":"0592", "pid":"059", "text":"厦门"}]);
 	 * @param {Map|Array} data
@@ -3890,7 +3999,8 @@ function _initNS(space){
 	 * @example removeData("0591");
 	 * @example removeData({"value":"0591"});
 	 * @example removeData(["0591", "0592", "0593"]);
-	 * @param {String|Map|Array} 要移除的列表项
+	 * @param {String|Map|Array} 要移除的列表项
+
 	 * @return {Integer} 成功移除的列表项个数
 	 */
 	xTreeCombo.prototype.removeData = function(id){
@@ -3898,7 +4008,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 显示弹出层
+	 * 显示弹出层
+
 	 */
 	xTreeCombo.prototype.showPopup = function(){
 		var isPop = this.isPopup();
@@ -3939,7 +4050,8 @@ function _initNS(space){
 	}
 	
 	/**
-	 * 隐藏弹出层
+	 * 隐藏弹出层
+
 	 */
 	xTreeCombo.prototype.hidePopup = function(inp, box, popup, trg){
 		var popup = this.getPopupEl();

@@ -1,0 +1,44 @@
+<script>
+    $(document).ready(function(e) {
+        $("#mainIframe").load(function(){
+            var width=$('.content').width()-210;
+            console.info("width:%o",width);
+            $(this).width( width < 790 ? 790 : width );
+        });
+    });
+</script>
+
+<link rel="stylesheet" type="text/css" href="$!{service_name}/resources/css/config/index.css"/>
+<link rel="stylesheet" href="$!{service_name}/resources/css/nav.css"/>
+<style>
+    .homeNavLine{
+        background: #659CAE;
+    }
+    .homeNavLine ul li a{
+        color: #fff !important;
+    }
+</style>
+$contain.get('/nav.vm')
+
+<table class="content">
+    <script>
+        function loadPage(url){
+            $('#mainIframe').attr("src",url);
+        }
+    </script>
+    <tbody>
+        <tr>
+            <td class="menu">
+                <ul class="menuList">
+                    #foreach($item in $menuList)
+                        <li class="menuItem"><a  rel="$!{service_name}$!{item.MENU_URL}" onclick="loadPage(this.rel)">$!{item.TITLE}</a></li>
+                    #end
+                </ul>
+            </td>
+            <td class="main">
+                <iframe  id="mainIframe" name="mainIframe" src="$!{service_name}/config/baseInfoCfg.htm"  align="left" frameborder="0"  />
+            </td>
+        </tr>
+    </tbody>
+</table>
+$contain.get('/footer.vm')

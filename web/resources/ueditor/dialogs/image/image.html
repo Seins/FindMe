@@ -176,6 +176,8 @@
                 uploadErrorCallback: function (data){
                     if(!data.info){
                         alert(lang.netError);
+                    }else{
+                        alert("上传失败:"+data.info);
                     }
                     //console && console.log(data);
                 },

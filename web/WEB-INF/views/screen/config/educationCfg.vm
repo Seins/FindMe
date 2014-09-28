@@ -1,0 +1,95 @@
+<style>
+    body{
+        height:500px;
+    }
+</style>
+#xForm_start({"id":"educationForm", "target":"_self"})
+    #xLayoutPanel_start({"debug":false,"width:":"80%", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
+    #xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"right", "cellVAlign":"middle",
+    "items":[
+        {"value":"新增","onClick":"doNew()"},
+        {"value":"修改","onClick":"doEdit()"},
+        {"value":"删除","onClick":"doDelete()"}
+    ]
+    })
+    #xGrid({"colspan":1, "name":"dataGrid", "multiple":false, "dragAndDrop":true,
+        "sortable":true, "height":"400px", "autoAdjust":false,"paging":true,"pageCountDefine":"10,20,30",
+        "events":{
+        "onInit":"doQuery()",
+        "onRowDblClicked" : "doEdit(rid, cid)"
+        },
+        "columns":[
+            {"dataIdx":"ID", "width":40, "title":"序号","align":"left"},
+            {"dataIdx":"SCHOOL_NAME", "width":230, "title":"学校名称","align":"left"},
+            {"dataIdx":"SCHOOL_LV", "width":100, "title":"学历等级","align":"left"},
+            {"dataIdx":"START_TIME", "width":100, "title":"入学时间","align":"left"},
+            {"dataIdx":"END_TIME", "width":100, "title":"毕业时间","align":"left"},
+            {"dataIdx":"EDUCATION_DESC", "width":200, "title":"在校事迹描述"},
+            {"dataIdx":"ORDER_NO", "width":100, "title":"显示顺序","align":"left"}
+
+        ]})
+
+    #xLayoutPanel_end
+#xForm_end
+
+<script>
+    function doQuery(){
+        dataGrid.clearAndLoadx("$!{service_name}/config/educationCfg.json");
+    }
+    function doEdit(rid, cid){
+        var sdata, id;
+        if(rid){
+            sdata = dataGrid.getDataByRowId(rid);
+        }else{
+            sdata = dataGrid.getSelectedData();
+        }
+        if(!sdata){
+            alert("请先选择要修改的数据!");
+            return;
+        }
+        id = sdata.ID;
+
+        var win = xWindow.getInstance("editEducationInfo", {w:680, h:500});
+        win.centerOnScreen();
+        win.setModal(true);
+        win.attachURL("$!{service_name}/config/editEducationCfg.htm?editId=" + id);
+        win.setText("修改教育信息");
+    }
+
+    function doNew(){
+        var win = xWindow.getInstance("newEducationInfo", {w:680, h:500});
+        win.centerOnScreen();
+        win.setModal(true);
+        win.attachURL("$!{service_name}/config/newEducationInfo.htm?userId=$request.userId");
+        win.setText("新建教育信息");
+    }
+
+    function doDelete(rid,cid){
+        var sdata, id;
+        if(rid){
+            sdata = dataGrid.getDataByRowId(rid);
+        }else{
+            sdata = dataGrid.getSelectedData();
+        }
+        if(!sdata){
+            alert("请先选择要修改的数据!");
+            return;
+        }
+        id = sdata.ID;
+        if(confirm("确定删除？")){
+            var params={};
+            $.post("$!{service_name}/config/deleteEducationInfo.json?editId="+id,params,function(data){
+                   if(data.result==true){
+                       alert('删除成功!');
+                       dataGrid.reload();
+                   }else{
+                       alert('删除失败:'+data.errorInfo);
+                   }
+            })
+        }else{
+            return ;
+        }
+    }
+</script>
+
+

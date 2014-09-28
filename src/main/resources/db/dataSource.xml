@@ -143,6 +143,9 @@
             <list>
                 <value>classpath:/db/sqlmap/*.xml</value>
                 <value>classpath:/db/sqlmap/**/*.xml</value>
+                <value>classpath:config/db/sqlmap/sys/**/*.xml</value>
+                <value>classpath:config/db/sqlmap/app/**/*.xml</value>
+                <value>classpath:config/db/sqlmap/wxapi/**/*.xml</value>
             </list>
         </property>
     </bean>

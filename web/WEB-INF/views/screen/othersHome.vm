@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="$!{service_name}/resources/css/nav.css"/>
+<style>
+    .homeNavLine{
+        background: #659CAE;
+    }
+    .homeNavLine ul li a{
+        color: #fff !important;
+    }
+</style>
+$contain.get('/nav-others.vm')
+##if($utils.common.isNotEmpty(${tpl.INTRO_TPL}) && $utils.common.isNotEmpty($introList))
+$contain.get('/tpl/home/bio.vm')
+##elseif($utils.common.isNotEmpty($tpl.PORTAL_TPL))
+##$contain.get($!{tpl.PORTAL_TPL})
+##else
+##您的微官网首页模板还未配置，请先配置！
+##end

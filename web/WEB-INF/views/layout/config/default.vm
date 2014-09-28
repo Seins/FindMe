@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>$!{sysParam.getSysParamValue("SYS_TITLE")}</title>
+    <meta content="IE=7" http-equiv="X-UA-Compatible" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link rel="stylesheet" href="$!{service_name}/resources/dhtmlx/dhtmlx.css" type="text/css">
+    <link rel="stylesheet" href="$!{service_name}/resources/xcomps/dhxPatch.css" type="text/css">
+    <link rel="stylesheet" href="$!{service_name}/resources/xcomps/xcomps.css" type="text/css"/>
+    <script src="$!{service_name}/resources/scripts/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="$!{service_name}/resources/scripts/jquery.json.js" type="text/javascript"></script>
+    <script src="$!{service_name}/resources/scripts/jquery.autoNumeric.min.js" type="text/javascript"></script>
+    <script src="$!{service_name}/resources/scripts/horn/horn.core.js" type="text/javascript"></script>
+    <script src="$!{service_name}/resources/scripts/uuid.js" type="text/javascript"></script>
+    <script src="$!{service_name}/resources/dhtmlx/dhtmlx-debug.js" type="text/javascript" ></script>
+    <script src="$!{service_name}/resources/My97DatePicker/WdatePicker.js" type="text/javascript" ></script>
+    <script src="$!{service_name}/resources/xcomps/dhxPatch.js" type="text/javascript" ></script>
+    <script src="$!{service_name}/resources/xcomps/xcomps.js" type="text/javascript" ></script>
+    <script src="$!{service_name}/resources/scripts/common.js" type="text/javascript" ></script>
+    <script type="text/javascript">dhtmlx.image_path="$!{service_name}/resources/dhtmlx/imgs/";if(!window.app)window.app={};app.serviceName="$!{service_name}";</script>
+</head>
+<body>
+<div class="h_screen">
+    $screen_content
+</div>
+</body>
+</html>

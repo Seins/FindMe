@@ -1,0 +1,13 @@
+a { color:#213f71;text-decoration:none; }
+a:hover { color:#0066cc; }
+.blk_18 { overflow:hidden; zoom:1; background:#4fade2; width:800px; margin-top:8px; }
+.blk_18 .pcont { width:800px; float:left; overflow:hidden; padding-left:5px; }
+.blk_18 .ScrCont { width:32766px; zoom:1; margin-left:-5px; }
+.blk_18 #List1_1, .blk_18 #List2_1 { float:left; }
+.blk_18 .LeftBotton,{ width:15px; height:74px; float:left; background:url("../../../images/home/left_op.png") no-repeat; }
+.blk_18 .RightBotton,{ width:15px; height:74px; float:left; background:url("../../../images/home/right_op.png") no-repeat; }
+.blk_18 .LeftBotton:hover { background-position: -20px 0; }
+.blk_18 .RightBotton:hover { background-position: -20px -100px; }
+.blk_18 .pl img { display:block; cursor:pointer; border:none;margin-top: 32px;margin-left: -3px; }
+.blk_18 .pl { width:150px;height: 350px; float:left; text-align:center; line-height:24px; padding: 25px;background:url("../../../images/phone.png") no-repeat;}
+.blk_18 a.pl:hover {color:#4fade2; background:#4fade2;background:url("../../../images/phone.png") no-repeat; }

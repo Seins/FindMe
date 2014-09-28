@@ -24,11 +24,20 @@ import java.util.Map;
  * @date: 2014/9/2 16:27
  */
 @HornController
-public class CatalogAction extends AbstractAction{
+public class CatalogAction extends AbstractAction {
     @Resource(name="catalogService")
     CatalogService catalogService;
 
     @HornRequestMapping(value = "/prjOverview")
+    /**
+    *方法名:prjOverview
+    *
+    *创建人:邓风森
+    *
+    *创建时间:2014/9/20
+    *
+    *文件描述:
+    **/
     public void prjOverview(HttpServletRequest request,Map params,ModelMap modelMap,
                             @HornRequestParam(name="catalogId")String catalogId,
                             @HornRequestParam(name="moduleId")String moduleId){
@@ -42,6 +51,7 @@ public class CatalogAction extends AbstractAction{
                 List picList = catalogService.queryModulesPictureList(params);
                 modelMap.put("modulesList", modulesList);
                 modelMap.put("picList",picList);
+                this.success(modelMap);
             } else {
                 throw new BizException("参数错误,请求失败");
             }

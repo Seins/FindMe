@@ -1,12 +1,41 @@
 body{
-    background:#CCC;
+    background:#19BB9B;
+}
+*:focus {outline: none;}
+.keySearch{
+    width: 1024px;
+    text-align: left;
+    margin: 0px auto;
+    z-index:3;
+    position: relative;
+    display: block;
+    padding-top: 45px;
+}
+.searchDiv{
+    width:450px;
+    background: #fff;
+
+}
+.searchDiv i[class="icon-search"]{
+    font-size: 20px;
+    color: #ccc;
+    line-height: 20px;
+    outline: none;
+}
+.searchDiv input[type="text"]{
+    width: 400px;
+    line-height: 20px;
+    border: 1px solid white;
+    text-align: left;
+    font-size: 18px;
+    color:#EEEEEE;
+    padding:2px;
 }
 .content{
-    min-width:1000px;
-    width:90%;
+    width:1000px;
     margin:0 auto;
     padding:0;
-    min-height:600px;
+    min-height:720px;
     overflow:hidden;
 }
 .content .item{
@@ -14,37 +43,30 @@ body{
     display:block;
     float:left;
     min-width:190px;
-    margin:10px auto;;
+    margin:20px auto;;
     padding:0;
-    border-radius:5px;
-    text-align:center;
+    text-align:left;
 }
 .content .item .itemImg{
     width:95%;
     margin:3px auto;
     display:blcok;
     max-width:100%;
-    border:3px solid #fff;
-    border-radius:5px;
     position:relative;
     cursor: pointer;
 }
 .content .item .itemImg img{
-    width:100%;
+    width:50%;
     display:block;
+    margin-bottom:20px;
+    padding:0;
     max-width:100%;
 }
 .content .item .itemImg span{
-    position:absolute;
-    top:0;
-    left:0;
+    position: absolute;
+    top: 0;
+    left: 50%;
     display:block;
-    background:#fff;
-    border:3px solid #fff;
-    border-bottom-right-radius:3px;
-    font-size:10px;
-    text-align:center;
-    color:#09C;
-    font:bold;
-    cursor:pointer;
+    color: #fff;
+    font-family: '微软雅黑';
 }

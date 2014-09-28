@@ -15,7 +15,7 @@
     </context-param>
     <context-param>
         <param-name>appContextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
+        <param-value>classpath:appContext.xml</param-value>
     </context-param>
     <context-param>
         <param-name>configLocationParam</param-name>
@@ -35,23 +35,14 @@
         <param-value>10000</param-value>
     </context-param>
 
-
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
 
     <listener>
         <listener-class>com.sagahl.horn.listener.AppInitListener</listener-class>
     </listener>
 
-    <listener>
-        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-    </listener>
-    <!--<listener>-->
-        <!--<listener-class>com.sagahl.horn.listener.IntializationListener</listener-class>-->
-    <!--</listener>-->
-    <!--<listener>-->
-        <!--<listener-class>-->
-            <!--org.springframework.web.context.ContextLoaderListener-->
-        <!--</listener-class>-->
-    <!--</listener>-->
     <filter>
         <filter-name>requestContextFilter</filter-name>
         <filter-class>com.sagahl.horn.filter.RequestContextFilter</filter-class>
@@ -61,14 +52,42 @@
         <filter-name>requestContextFilter</filter-name>
         <url-pattern>*.htm</url-pattern>
     </filter-mapping>
-<filter-mapping>
-    <filter-name>requestContextFilter</filter-name>
-    <url-pattern>*.json</url-pattern>
-</filter-mapping>
+
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>*.json</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>requestContextFilter</filter-name>
+        <url-pattern>*.xml</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>com.sagahl.horn.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>retMapping</param-name>
+            <param-value>do=json</param-value>
+        </init-param>
     </servlet>
+
+    <servlet>
+        <servlet-name>weixin</servlet-name>
+        <servlet-class>com.freemind.vess.wxapi.WeixinServlet</servlet-class>
+
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>weixin</servlet-name>
+        <url-pattern>/wxapi/*</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>*.htm</url-pattern>
@@ -77,6 +96,16 @@
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>*.json</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dispatcherServlet</servlet-name>
+        <url-pattern>*.xml</url-pattern>
     </servlet-mapping>
 
 
@@ -93,6 +122,7 @@
         <error-code>500</error-code>
     </error-page>
     <welcome-file-list>
-        <welcome-file>/login.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>picWall.htm</welcome-file>
     </welcome-file-list>
 </web-app>

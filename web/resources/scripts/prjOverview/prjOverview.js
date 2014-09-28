@@ -1,63 +1,63 @@
 var moveInterval;
 var scrolledHeight=0;
-var speed=40;
-function pre(){
+var speed=5;
+function pre(picListId){
     if(moveInterval!=null){
-        console.debug("runing1");
+       // console.debug("runing1");
         return ;
     }else{
-        var current=$('.active').index();
+        var current=$('#'+picListId).children(".active").index();
         if(current>0){
-            var preNode=$('#picList').children(".active").prev();
-            $('#picList').children(".active").removeClass("active");
+            var preNode=$('#'+picListId).children(".active").prev();
+            $('#'+picListId).children(".active").removeClass("active");
             preNode.addClass("active");
-            var scrollHeight=$('#picList').children(current).height();
-            moveInterval=setInterval("moveDown("+scrollHeight+");",1);
+            var scrollHeight=$('#'+picListId).children("li:eq("+current+")").height();
+            moveInterval=setInterval(function(){moveDown(scrollHeight,picListId)},1);
         }else{
             alert('已经是第一张了!');
         }
     }
 }
 
-function next(){
-    if(moveInterval!=null){
-        console.debug("runing");
+function next(picListId){
+   if(moveInterval!=null){
+       //console.debug("runing");
         return ;
     }else{
-        var current=$('.active').index();
-        if(current<($('#picList').children().length-1)){
-            var scrollHeight=$('.active').height();
-            var nextNode=$('#picList').children(".active").next();
-            $('#picList').children(".active").removeClass("active");
-            nextNode.addClass("active");
-            moveInterval=setInterval("moveUp("+scrollHeight+");",1);
+        var current=$("#"+picListId).children(".active").index();
+        var childCount=$('#'+picListId).children().length-1;
+        if(current<childCount){
+            var scrollHeight=$("#"+picListId).children(".active").height();
 
+            var nextNode=$('#'+picListId).children(".active").next();
+            $('#'+picListId).children(".active").removeClass("active");
+            nextNode.addClass("active");
+            moveInterval=setInterval(function(){moveUp(scrollHeight,picListId)},1);
         }else{
             alert('已经是最后一张了!');
         }
     }
 }
-
-function moveUp(value){
-    if(scrolledHeight>=(value+10)){
+function moveUp(value,picListId){
+    if(scrolledHeight>=(value+5)){
         clearInterval(moveInterval);
         moveInterval=null;
         scrolledHeight=0;
 
     }else{
-        $('#picList').scrollTop($('#picList').scrollTop()+speed);
+        $('#'+picListId).scrollTop($('#'+picListId).scrollTop()+speed);
         scrolledHeight+=speed;
     }
 }
-function moveDown(value){
+function moveDown(value,picListId){
 
-    if(scrolledHeight>=(value+10)){
+    if(scrolledHeight>=(value+5)){
         clearInterval(moveInterval);
         moveInterval=null;
         scrolledHeight=0;
 
     }else{
-        $('#picList').scrollTop($('#picList').scrollTop()-speed);
+        $('#'+picListId).scrollTop($('#'+picListId).scrollTop()-speed);
         scrolledHeight+=speed;
     }
 }

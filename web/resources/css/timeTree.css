@@ -1,0 +1,217 @@
+body{
+    background:#C3E0C5;
+    padding-top: 40px;
+}
+.title{
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+
+}
+.title h2{
+    color:#7A98C5;
+    font-family:'仿宋';
+    font-size:30px;
+    font-weight:700;
+    text-align:left;
+    text-indent:1cm;
+    padding:2px;
+}
+.content{
+    width:1000px;
+    margin:0 auto;
+    border-color:#0C3;
+    padding:1%;
+    position:relative;
+    height:100%;
+    min-height: 600px;
+}
+.timeTreeStartPoint{
+    width:100px;
+    height:30px;
+    background:#7C8F9D;
+    display:block;
+    position:absolute;
+    left:50%;
+    margin-left:-50px;
+    top:0;
+    text-align:center;
+    line-height:30px;
+    font-size:14px;
+    font-family:'微软雅黑';
+    color:#fff;
+}
+.timeTreeMidLine{
+    height:100%;
+    display:block;
+    position:absolute;
+    left:50%;
+    top:0px;
+    border: 1px solid #7C8F9D;
+    display:none;
+    z-index:-1;
+}
+.timeTree{
+    width:100%;
+    margin:0 auto;
+    display:block;
+    overflow:hidden;
+    padding-top:20px;
+    padding:0;
+
+}
+.timeTree li{
+    list-style:none;
+    display:block;
+    width:100%;
+    min-height:150px;
+    margin:0;
+    padding:5px;
+}
+.timeTree li>a{
+    display:block;
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    width:350px;
+    min-height:140px;
+    position:relative;
+    background:#fff;
+    display:none;
+}
+.timeTree li>a .timeNodeIcon{
+    display:block;
+    height:32px;
+    width:32px;
+    padding:3px;
+    border-radius:32px;
+    background:#7C8F9D;
+    display:none;
+    line-height:14px;
+    font-size:10px;
+    color:#fff;
+    text-align:center;
+    cursor:pointer;
+}
+
+.nodeOnLeft{
+    position:absolute;
+    left:-172px;
+    top:20%;
+}
+.nodeOnRight{
+    position:absolute;
+    right:-166px;
+    top:20%;
+}
+.timeTree li:nth-child(odd) .item:before{
+    content:'';
+    height:0px;
+    width:0px;
+    overflow:hidden;
+    display:block;
+    border-width:15px 15px;
+    border-color:transparent #fff transparent transparent;
+    border-style:solid;
+    z-index:-1;
+    position:absolute;
+    left:-30px;
+    top:30%;
+    margin-top:-15px;
+}
+.timeTree li:nth-child(even) .item:before{
+    content:'';
+    height:0px;
+    width:0px;
+    overflow:hidden;
+    display:block;
+    border-width:15px 15px;
+    border-color:transparent transparent  transparent #fff ;
+    border-style:solid;
+    z-index:-1;
+    position:absolute;
+    right:-30px;
+    top:30%;
+    margin-top:-15px;
+
+}
+.odd-before{
+    content:'';
+    height:0px;
+    width:0px;
+    overflow:hidden;
+    display:block;
+    border-width:15px 15px;
+    border-color:transparent transparent transparent #fff;
+    border-style:solid;
+    z-index:-1;
+    position:absolute;
+    right:-30px;
+    top:30%;
+    margin-top:-15px;
+
+}
+.even-before{
+    content:'';
+    height:0px;
+    width:0px;
+    overflow:hidden;
+    display:block;
+    border-width:15px 15px;
+    border-color:transparent #fff transparent transparent ;
+    border-style:solid;
+    z-index:-1;
+    position:absolute;
+    left:-30px;
+    top:30%;
+    margin-top:-15px;
+
+}
+.timeTree li .item .timeNodeContent{
+    max-height:98%;
+    width:98%;
+    overflow:hidden;
+    padding:3px;
+    display:block;
+    position:relative;
+}
+.timeTree li .item .timeNodeContent>img{
+    width:40%;
+    overflow: hidden;
+    float:left;
+    clear:both;
+    display: block;
+}
+.timeTree li .item .timeNodeContent>h2{
+    font-size: 18px;
+    line-height: 25px;
+    overflow: hidden;
+    text-align:center;
+    white-space: nowrap;
+    padding:0;
+    color:#069;
+}
+.timeTree li .item .timeNodeContent>p{
+    overflow:hidden;
+    text-indent:0.6cm;
+    font-size:12px;
+    color:#009;
+    padding:5px;
+}
+.timeTreeLoadLink{
+    text-decoration:none;
+    width:50px;
+    height:50px;
+    text-align:center;
+    display:block;
+    font-size:16px;
+    line-height:50px;
+    position:absolute;
+    left:50%;
+    bottom:-50px;
+    color:#fff;
+    margin-left:-25px;
+    border-radius:25px;
+    background:#399;
+    display:none;
+}

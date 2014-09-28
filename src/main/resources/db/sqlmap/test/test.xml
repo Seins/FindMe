@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="test">
-    <select id="queryUserInfo" parameterClass="map" resultClass="hashMap">
-        SELECT * FROM SYS_USER
+    <resultMap id="loginUser" class="admin.common.LoginUser">
+        <result property="id" column="ID"/>
+        <result property="idcardNo" column="IDCARD_NO"/>
+        <result property="chineseName" column="CHINESE_NAME"/>
+        <result property="englishName" column="ENGLISH_NAME"/>
+        <result property="qq" column="QQ"/>
+        <result property="phoneNo" column="PHONE_NUMBER"/>
+        <result property="email" column="EMAIL"/>
+        <result property="activeStatus" column="ACTIVE_STATUS"/>
+        <result property="initStatus" column="INIT_STATUS"/>
+        <result property="password" column="PASSWORD"/>
+    </resultMap>
+
+    <select id="queryUserInfo" parameterClass="map" resultMap="loginUser">
+        SELECT * FROM login_info
         WHERE
-        LOGIN_NAME=#loginName#
+        IDCARD_NO=#idcardNo#
         AND
-        LOGIN_PASSWORD=md5(#loginPassword#)
+        PASSWORD=md5(#password#)
     </select>
 
     <select id="queryUserInfoByIdcardNo" parameterClass="map" resultClass="hashMap">

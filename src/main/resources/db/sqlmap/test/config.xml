@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="config">
+    <select id="queryAllMenuItem" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM cfg_menu
+    </select>
+    <select id="queryUserLoginInfo" parameterClass="map" resultClass="hashMap">
+        SELECT l.*,p.* FROM login_info l,personal_info p
+        WHERE
+          l.ID=#userId#
+        AND
+          l.ID=p.USER_ID
+    </select>
+    <select id="queryUserEducationInfoById" parameterClass="map" resultClass="hashMap">
+         SELECT  * FROM education
+         WHERE
+         USER_ID=#userId#
+    </select>
+    <select id="queryEducationInfoById" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM education
+        WHERE
+          ID=#editId#
+    </select>
+    <select id="queryAllTimeNodesById" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM TIME_NODES
+        WHERE
+          USER_ID=#userId#
+        ORDER BY
+          START_TIME DESC
+    </select>
+    <select id="queryTimeNodeById" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM TIME_NODES
+        WHERE
+          ID=#editId#
+    </select>
+
+    <update id="updateUserLoginInfo" parameterClass="map">
+        UPDATE LOGIN_INFO as l,personal_info as p
+        SET
+            l.CHINESE_NAME = #chineseName#,
+            l.ENGLISH_NAME = #englishName#,
+            l.`QQ` = #qq#,
+            l.`PHONE_NUMBER` = #phoneNumber#,
+            l.`EMAIL` = #email#,
+            l.CONTENT_IMG_URL=#contentImgUrl#,
+            l.CAREER_OBJECTIVE=#careerObjective#,
+            l.HOME_TPL=#homeTpl#,
+            p.USER_ICON=#userIcon#,
+            p.BIRTHDATE=#birthdate#,
+            p.EDUCATION=#education#,
+            p.HOBBIES=#hobbies#,
+            p.GRADUATION_SCHOOL=#graduationSchool#
+        WHERE l.ID = #userId#
+        AND   p.USER_ID=#userId#
+    </update>
+
+    <insert id="addNewEducationInfo" parameterClass="map">
+        INSERT INTO `EDUCATION`
+        (
+            `USER_ID`,
+            `SCHOOL_NAME`,
+            `SCHOOL_LV`,
+            `START_TIME`,
+            `END_TIME`,
+            `EDUCATION_DESC`,
+            `ORDER_NO`
+        )
+        VALUES
+        (
+            #userId#,
+            #schoolName#,
+            #schoolLv#,
+            #startTime#,
+            #endTime#,
+            #educationDesc#,
+            #orderNo#
+        )
+    </insert>
+
+    <insert id="addTimeNode" parameterClass="map">
+        INSERT INTO `TIME_NODES`
+        (
+            `START_TIME`,
+            `END_TIME`,
+            `TITLE`,
+            `CONTENT_DESC`,
+            `DETAIL_URL`,
+            `CONTENT_IMG_URL`,
+            `USER_ID`
+        )
+        VALUES
+        (
+            #startTime#,
+            #endTime#,
+            #title#,
+            #contentDesc#,
+            #detailUrl#,
+            #contentImgUrl#,
+            #userId#
+        );
+
+    </insert>
+    <update id="updateEducationById" parameterClass="map">
+        UPDATE `EDUCATION`
+        SET
+        `SCHOOL_NAME` = #schoolName#,
+        `SCHOOL_LV` = #schoolLv#,
+        `START_TIME` = #startTime#,
+        `END_TIME` = #endTime#,
+        `EDUCATION_DESC` = #educationDesc#,
+        `ORDER_NO` = #orderNo#
+        WHERE `ID` =#editId#
+
+    </update>
+
+    <update id="updateTimeNode" parameterClass="map">
+        UPDATE .`TIME_NODES`
+        SET
+            `START_TIME` = #startTime#,
+            `END_TIME` = #endTime#,
+            `TITLE` = #title#,
+            `CONTENT_DESC` = #contentDesc#,
+            `DETAIL_URL` = #detailUrl#,
+            `CONTENT_IMG_URL` = #contentImgUrl#
+        WHERE `ID` =#editId#
+
+    </update>
+
+    <delete id="deleteEducationById" parameterClass="map">
+        DELETE FROM EDUCATION
+        WHERE
+          ID=#editId#
+    </delete>
+
+    <delete id="deleteTimeNodeById" parameterClass="map">
+        DELETE FROM TIME_NODES
+        WHERE
+          ID=#editId#
+    </delete>
+
+    <select id="queryAllCatalogById" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM catalog
+        WHERE
+          USER_ID=#userId#
+    </select>
+    <select id="queryCatalogById" parameterClass="map" resultClass="hashMap">
+        SELECT * FROM catalog
+        WHERE
+          ID=#editId#
+    </select>
+    <insert id="addNewCatalog" parameterClass="map">
+        INSERT INTO `CATALOG`
+        (
+            `CATALOG_NAME`,
+            `CATALOG_PIC`,
+            `CATALOG_URL`,
+            `USER_ID`,
+            `CATALOG_DESC`
+        )
+        VALUES
+        (
+            #catalogName#,
+            #catalogPic#,
+            #catalogUrl#,
+            #userId#,
+            #catalogDesc#
+        );
+
+    </insert>
+    <update id="updateCatalogById" parameterClass="map">
+        UPDATE `CATALOG`
+        SET
+        `CATALOG_NAME` = #catalogName#,
+        `CATALOG_PIC` = #catalogPic#,
+        `CATALOG_URL` = #catalogUrl#,
+        `CATALOG_DESC` = #catalogDesc#
+        WHERE `ID` =#editId#;
+
+    </update>
+    <delete id="deleteCatalogById" parameterClass="map">
+         DELETE FROM catalog
+         WHERE
+          ID=#editId#
+    </delete>
+</sqlMap>

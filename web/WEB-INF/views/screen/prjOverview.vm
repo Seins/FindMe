@@ -1,13 +1,3 @@
-
-<link rel="stylesheet" href="$!{service_name}/resources/css/nav.css"/>
-$contain.get('/nav.vm')
-<script type="text/javascript" src="$!{service_name}/resources/scripts/prjOverview/prjOverview.js"></script>
-<link rel="stylesheet" type="text/css" href="$!{service_name}/resources/css/prjOverview.css">
-<link rel="stylesheet" href="$!{service_name}/resources/fontAwesome/css/font-awesome-ie7.css" type="text/css">
-<link rel="stylesheet" href="$!{service_name}/resources/fontAwesome/css/font-awesome.css" type="text/css">
-<!--[if lt IE 10]>
-<script type="text/javascript" src="$!{service_name}/resources/pie/PIE.js"></script>
-<![endif]-->
 <script language="javascript">
     $(function() {
         if (window.PIE) {
@@ -15,10 +5,42 @@ $contain.get('/nav.vm')
                 PIE.attach(this);
             });
         }
+        $('#fullPage').fullpage({
+            'anchors': [#foreach($module in $modulesList)#if($velocityCount > 1),#end'$module.MODULE_NAME'#end],
+            'navigation': true,
+            'navigationColor': '#fff',
+            'onLeave':function(index,nextIndex,direction){
+                var nextPage=$('.section:eq('+index+')');
+               //console.debug("nextPageId:%o",nextPage.attr("id"));
+        }
+        });
+    });
+    $(document).ready(function(){
+        $('.picList').slideDown(1000);
+
+        setTimeout(function(){
+            $('.content .contentDesc h2').fadeIn("slow");
+        },1300);
+        setTimeout(function(){
+            $('.content .contentDesc p').fadeIn("slow");
+        },1600);
+        setTimeout(function(){
+            $('.content .contentDesc2 h4').slideDown("slow");
+        },600);
+        setTimeout(function(){
+            $('.content .contentDesc2 p').fadeIn("slow");
+        },900);
     });
 </script>
+
 <!--[if lt IE 10]>
     <style>
+        .content{
+            margin-top:100px;
+        }
+        .picList{
+       filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#495B5B ,endColorstr=#6F8B8B);
+        }
         .content .leftDiv .bottom-desc{
             min-height:60px;
             width:100%;
@@ -29,7 +51,13 @@ $contain.get('/nav.vm')
             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#77797C ,endColorstr=#77797C);
         }
         .overviewList li .overviewItem{
-            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66B2B2 ,endColorstr=#66B2B2);
+            filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#87A8A8 ,endColorstr=#87A8A8);
+        }
+        .contentBody2{
+             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#E5F2F2 ,endColorstr=#E5F2F2);
+        }
+         .homeNavLine{
+             filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#96B3B3 ,endColorstr=#96B3B3);
         }
     </style>
     <script>
@@ -38,35 +66,44 @@ $contain.get('/nav.vm')
         })
     </script>
 <![endif]-->
-<div class="content">
-    <div class="leftDiv">
-        <ul class="picList" id="picList">
-            #foreach($pic in $picList)
-                <li  #if($velocityCount == 1)class="active"#end>
-                    <img src="$!{service_name}$!{pic.PIC_URL}" />
-                    <div class="bottom-desc">
-                        <p class="desc-title">$!{pic.PIC_DESC_TITLE}</p>
-                        <p class="desc-content">$!{pic.PIC_DESC_CONTENT}</p>
-                    </div>
-                </li>
-            #end
-        </ul>
-        <span class="pre" onclick="pre()"><img src="$!{service_name}/resources/images/icon/pre.png"/> </span>
-        <span class="next" onclick="next()"><img src="$!{service_name}/resources/images/icon/next.png"/> </span>
-    </div>
-    <div class="rightDiv">
-        <ul class="overviewList">
-            #foreach($module in $modulesList)
-                <li id="$!{catalog.ID}">
-                    <div class="overviewItem">
-                        <div class="imgDiv">
-                            <img src="$!{service_name}$!{module.MODULE_IMG}"/>
-                        </div>
+<style>
+    .homeNavLine{
+        background: rgba(0,0,0,0.2);
 
-                        <p>$!{module.MODULE_NAME}</p>
-                    </div>
-                </li>
-            #end
-        </ul>
+    }
+    .homeNavLine ul li a{
+        color: #fff !important;
+    }
+</style>
+$contain.get('/nav.vm')
+<div id="fullPage">
+#foreach($module in $modulesList)
+<div class="section" id="$module.ID">
+    <div class="content">
+        <div class="contentDesc">
+            <h2>$!{module.MODULE_NAME}</h2>
+            <p>项目发布链接:<br/>&nbsp;&nbsp;$!{module.MODULE_RELEASE_URL}</p>
+        </div>
+        <div class="leftDiv">
+            <ul class="picList" id="picList$velocityCount">
+                #foreach($pic in $picList)
+                    <li  #if($velocityCount == 1)class="active"#end>
+                        <img src="$!{service_name}$!{pic.PIC_URL}" />
+                        <div class="bottom-desc">
+                            <p class="desc-title">$!{pic.PIC_DESC_TITLE}</p>
+                            <p class="desc-content">$!{pic.PIC_DESC_CONTENT}</p>
+                        </div>
+                    </li>
+                #end
+            </ul>
+            <span class="pre" onclick="pre('picList$velocityCount')"><img src="$!{service_name}/resources/images/icon/pre.png"/> </span>
+            <span class="next" onclick="next('picList$velocityCount')"><img src="$!{service_name}/resources/images/icon/next.png"/> </span>
+        </div>
+        <div class="contentDesc2">
+            <h4>项目简介:</h4>
+            <p><br/>&nbsp;&nbsp;&nbsp;&nbsp;$!{module.INTRODUCTION_OVERVIEW}</p>
+        </div>
     </div>
+</div>
+#end
 </div>

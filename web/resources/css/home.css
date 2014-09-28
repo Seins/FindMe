@@ -15,6 +15,8 @@ body{
     position:relative;
     text-align: center;
     background: url(../images/home/smiler.jpg) 0 45px;
+    box-shadow: 0 0 10px #333;
+    padding-top: 40px;
 }
 .contentDescIcon{
     display: block;
@@ -22,15 +24,13 @@ body{
     position: relative;
     top: 50px;
     float: left;
+    clear: both;
     margin-left: 10%;
-
 }
 .contentDescIcon img{
     width: 200px;
     height: 200px;
-    margin:15px auto;
-    display: none;
-    behavior: url(../pie/PIE.htc);
+    display: block;
     border-radius: 100px;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
@@ -50,19 +50,14 @@ body{
     margin-top: 80px;
     float: left;
     text-align: left;
+    padding:0;
     margin-left: 3%;
+
+    position: relative;
 }
-.contentDesc p{
-    text-indent: 1cm;
-    max-width:300px;
-    line-height: 35px;
-    display: block;
-    clear: both;
-    color: #8CA7A3;
-    border-bottom: 1px dashed #8CA7A3;
-    font-size: 16px;
-    font: bold;
-    font-weight: 100;
+.contentDesc label{
+    color: cornflowerblue;
+    font-size: 14px;
 }
 .homeArtical{
     min-height: 400px;
@@ -70,25 +65,22 @@ body{
     display: block;
     position:relative;
     padding-top:2%;
+    overflow: hidden;
 }
 .homeArtical .articalList{
-    min-width: 900px;
-    max-width: 60%;
+    max-width: 900px;
     margin: 0 auto;
     min-height: 300px;
     position:relative;
     list-style: none;
-    overflow: hidden;
-    border-left:1px solid #ccc;
-    border-right: 1px solid #ccc;
+    display: block;
     text-align: center;
 }
 .homeArtical .articalList li{
     list-style: none;
     float: left;
-    behavior: url(../pie/PIE.htc);
-    margin:30px 10px;
-
+    margin:10px 10px;
+    display: block;
 }
 .homeArtical .articalList li .item {
     height: 240px;
@@ -121,13 +113,4 @@ body{
     font:bold;
     font-family: '微软雅黑';
     color:#fff;
-}
-.footer{
-    z-index: 2;
-    min-width: 1000px;
-    max-width: 90%;
-    margin:2% auto;
-    border-top: 2px solid #ccc;
-    min-height: 180px;
-    display: block;
 }

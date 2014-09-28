@@ -1,0 +1,57 @@
+.footer{
+    width:90%;
+    min-width:1000px;
+    height:200px;
+    border-top:2px solid #ccc;
+    display:block;
+    margin:5px auto;
+    position:relative;
+}
+.footer .footerContent{
+    width:660px;
+    display:block;
+    position:relative;
+    margin:0 auto;
+    display:block;
+    padding:0;
+    height:100%;
+    overflow:hidden;
+    padding-top:10px;
+    line-height:100%;
+}
+.footer .footerContent .companyTDCode{
+    width:250px;
+    height:70%;
+    overflow:hidden;
+    display:block;
+    float:left;
+    margin-top:20px;
+    clear:both;
+    padding:0;
+    text-align: center;
+}
+.footer .footerContent .companyTDCode img{
+    width:70%;
+    border:1px solid #fff;
+    padding:0;
+    display: block;
+    margin: 20px auto;
+}
+.footer .footerContent .companyInfo{
+    width:400px;
+    overflow:hidden;
+    display:block;
+    margin-left:5px;
+    float:left;
+    margin-top:30px;
+    border-left: 2px solid lightgray;
+}
+.footer .footerContent .companyInfo>p{
+    font-size:12px;
+    color:#000;
+    line-height:25px;
+    margin:0;
+    padding:0;
+    text-indent:0.2cm;
+    color:cornflowerblue;
+}

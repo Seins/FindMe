@@ -1,0 +1,15 @@
+<div class="homeNavLine">
+    <p>Find Me</p>
+    <ul class="homeNav">
+        #if($!{userLogined})
+            <li><a href="$!{service_name}/home.htm">返回我的首页</a></li>
+        #else
+            <li ><a href="$!{service_name}/login.htm">登陆</a></li>
+        #end
+       #if($!{request.userId})
+        <li><a href="$!{service_name}/picWall.htm">照片墙</a></li>
+        <li><a href="$!{service_name}/othersHome.htm?userId=$!{request.userId}">他的主页</a></li>
+        <li><a href="$!{service_name}/othersTimeTree.htm?userId=$!{request.userId}">他的时光轴</a></li>
+       #end
+    </ul>
+</div>

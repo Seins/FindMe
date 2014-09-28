@@ -24,7 +24,7 @@
 .input-uname, .input-upassword{
 	/*background: url("http://sandbox.runjs.cn/uploads/rs/128/bgluez5h/login_bg.jpg") no-repeat scroll 0 0 transparent;*/
 	background:  no-repeat scroll 0 0 transparent;
-	color: #767676;
+	color: #000;
 	height: 28px;
 	width: 244px;
 	display: inline-block;
