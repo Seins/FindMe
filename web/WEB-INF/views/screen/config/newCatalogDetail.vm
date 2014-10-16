@@ -1,0 +1,85 @@
+<script type="text/javascript" charset="utf-8" src="$!{service_name}/resources/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="$!{service_name}/resources/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="$!{service_name}/resources/ueditor/ueditorPatch.js"></script>
+#xForm_start({"id":"detailContentForm", "target":"_self"})
+    #xLayoutPanel_start({"debug":false,"width:":"80%", "cols":3, "fieldset":true, "fieldsetStyle":""})
+        #xRadio({"label":"是否启用详细","labelWidth":"120px","required":true,"name":"hasContent","id":"hasContent","readOnly":false,
+        "colspan":2,"value":"0","items":[
+         {"id":"opt1","value":"0","label":"否"}
+        ,{"id":"opt2","value":"1","label":"是"}]})
+
+        #xCombo({"name":"contentType","label":"详细页类型","value":"", "multiple":false,"colspan":1,
+            "selectFirst":true,
+            "onChanged":"setContentUri(this.getValue())",
+        "items":[{"value":"0","text":"自定义文章"},
+                  {"value":"1","text":"幻灯片展示"}]})
+        #hrline({"colspan":3})
+        #xHidden({"name":"contentTplUri","id":"contentTplUri","value":""})
+        #xPanel_start({"id":"articleContent","name":"articleContent","colspan":3,"style":"margin:0;padding:0;"})
+            #xLabelBox_start({"colspan":3, "label":"自定义文章内容","labelWidth":"130px","required":true})
+                <script id="content" name="content" type="text/plain" style="width:580px;height:300px;"></script>
+            #xLabelBox_end
+        #xPanel_end
+        #xPanel_start({"id":"picContent","name":"picContent","colspan":3})
+            #xGrid({"colspan":3, "name":"dCPGrid","id":"dCPGrid",  "multiple":false, "dragAndDrop":true,
+            "sortable":true, "height":"240px", "autoAdjust":false,"paging":true,"pageCountDefine":"10,20,30","multiline":true,
+            "events":{
+                "onInit":"queryDCPData()",
+                "onRowDblClicked" : "editDCPData(rid, cid)"
+            },
+            "columns":[
+                {"dataIdx":"ID", "width":120, "title":"序号","align":"left"},
+                {"dataIdx":"PIC_URL", "width":120, "title":"预览图","align":"left","render":"imgRender(td,data,rowData)"},
+                {"dataIdx":"PIC_TITLE", "width":120, "title":"幻灯片标题","align":"left"},
+                {"dataIdx":"PIC_DESC", "width":200, "title":"幻灯片描述","align":"center"},
+                {"dataIdx":"ORDER_NO", "width":120, "title":"排序","align":"left"}
+            ]})
+        #xPanel_end
+
+        #xButtons({"colspan":3,"cellHeight":"30px","cellAlign":"right", "btnAlign":"center", "cellVAlign":"middle","width":"100%",
+                "items":[
+                    {"value":"保存","onClick":"doSave()"}
+                ]
+        })
+    #xLayoutPanel_end
+#xForm_end
+
+<script>
+    var ueEditor=null;
+    /*页面初始化*/
+    XComps.onReady(function(){
+        ueEditor = UE.getEditor('content', {elementPathEnabled:false, maximumWords:20000, toolbars:[[
+            'fullscreen', 'source', '|', 'undo', 'redo', '|', 'bold', 'italic', 'underline', 'strikethrough', '|',
+            'fontsize', 'forecolor', 'backcolor', '|', 'insertimage', 'insertvideo', 'map', 'link', 'unlink', '|',
+            'insertorderedlist', 'insertunorderedlist', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
+            'removeformat', 'formatmatch', 'autotypeset', 'cleardoc', 'insertcode']]});
+            $('#picContent').hide();
+    });
+
+    function queryDCAData(){
+
+    }
+
+    function queryDCPData(){
+
+    }
+    function setContentUri(type){
+        switch (type){
+            case '0':
+                XComps.getComp('contentTplUri').setValue(type)
+                $('#articleContent').show();
+                $('#picContent').hide();
+                break;
+            case '1':
+                XComps.getComp('contentTplUri').setValue(type);
+                $('#articleContent').hide();
+                $('#picContent').show();
+                break;
+            default :
+                XComps.getComp('contentTplUri').setValue(type);
+                $('#articleContent').show();
+                $('#picContent').hide();
+                break;
+        }
+    }
+</script>

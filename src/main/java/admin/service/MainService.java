@@ -5,8 +5,10 @@ package admin.service;/**
  **/
 
 import admin.common.LoginUser;
+import com.freemind.cube.common.exception.BizException;
 import com.freemind.cube.common.util.MapUtils;
 import com.freemind.cube.server.dao.IDao;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -44,5 +46,16 @@ public class MainService {
 
     public List queryUserCatalog(Map params){
         return baseDao.queryForList("catalog.queryCatalogByUserId",params);
+    }
+
+    public void addNew(Map params){
+        if( baseDao.queryForOne("test.queryExitUserByIdcard",params)!=null){
+            throw new BizException("该身份证号码已经被注册.");
+        }else{
+            String userId=(String)baseDao.insert("test.addNewLogin",params);
+            params.put("userId",userId);
+            baseDao.insert("test.addNew",params);
+        }
+
     }
 }

@@ -10,20 +10,24 @@
 </style>
 #xForm_start({"id":"baseInfoForm", "target":"_self"})
     #xLayoutPanel_start({"debug":false,"width:":"80%", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
-        #xHidden({"id":"userIcon","name":"userIcon","value":"$!{userbaseInfo.USER_ICON}"})
-        <p style="padding-left: 9.5%;">个人头像：</p>
-        <div style="padding-left: 20%;">
-            <img style="height:180px; border:1px solid #5794BF;" id="userIconPre" src="$!{userbaseInfo.USER_ICON}">
-            <input type="button" onclick="xImgSelector.show('userIcon', 'userIconPre')" value="选择图片">
-            <input type="button" onclick="replaceSrc($('#userIcon').attr('id'))" value="重置">
-        </div>
-        #xHidden({"id":"contentImgUrl","name":"contentImgUrl","value":"$!{userbaseInfo.CONTENT_IMG_URL}"})
-        <p style="padding-left: 9.5%;">主页背景图片:</p>
-        <div style="padding-left: 20%;">
-            <img style="height:180px; border:1px solid #5794BF;" id="contentImgPre" src="$!{userbaseInfo.CONTENT_IMG_URL}">
-            <input type="button" onclick="xImgSelector.show('contentImgUrl', 'contentImgPre')" value="选择图片">
-            <input type="button" onclick="replaceSrc($('#contentImgUrl').attr('id'))" value="重置">
-        </div>
+        #xTabPanel_start({"colspan":1,"id":"cfgTab","width":"100%","height":"500px"})
+        #xTab_start({"id":"iconTab","name":"头像配置","width":"100px"})
+            #xHidden({"id":"userIcon","name":"userIcon","value":"$!{userbaseInfo.USER_ICON}"})
+            <p style="width: 120px;text-align: right">个人头像：</p>
+            <div style="padding-left: 120px;">
+                <img style="height:180px; border:1px solid #5794BF;" id="userIconPre" src="#if($!{userbaseInfo.USER_ICON})$!{userbaseInfo.USER_ICON}#else$!{service_name}/resources/images/blankTip.png#end">
+                <input type="button" onclick="xImgSelector.show('userIcon', 'userIconPre')" value="选择图片">
+                <input type="button" onclick="replaceSrc('userIcon','userIconPre')" value="重置" style="background: #F6A64E !important;color:#fff;">
+            </div>
+            #xHidden({"id":"contentImgUrl","name":"contentImgUrl","value":"$!{userbaseInfo.CONTENT_IMG_URL}"})
+            <p style="width: 120px;text-align: right">主页标题图片:</p>
+            <div style="padding-left:120px;">
+                <img style="height:180px; border:1px solid #5794BF;" id="contentImgPre" src="#if($!{userbaseInfo.CONTENT_IMG_URL})$!{userbaseInfo.CONTENT_IMG_URL}#else$!{service_name}/resources/images/blankTip.png#end">
+                <input type="button" onclick="xImgSelector.show('contentImgUrl', 'contentImgPre')" value="选择图片">
+                <input type="button" onclick="replaceSrc($('#contentImgUrl').attr('id'))" value="重置" style="background: #F6A64E !important;color:#fff;">
+            </div>
+        #xTab_end
+        #xTab_start({"id":"contentInfo","name":"基础信息配置","width":"100px"})
         #xTextField({"id":"careerObjective","name":"careerObjective","width":"80%","label":"求职意向","labelWidth":"120px","value":"$!{userbaseInfo.CAREER_OBJECTIVE}","required":true,"sufLabelWidth":"180px","sufLabel":"(不能超过18位)"})
         #xTextField({"id":"idNumber","name":"idNumber","width":"80%","label":"身份证号码","labelWidth":"120px","value":"$!{userbaseInfo.IDCARD_NO}","required":true,"sufLabelWidth":"180px","sufLabel":"(不能超过18位)","readOnly":"false"})
         #xTextField({"id":"chineseName","name":"chineseName","width":"80%","label":"中文名","labelWidth":"120px","value":"$!{userbaseInfo.CHINESE_NAME}","required":true,"sufLabelWidth":"180px","sufLabel":"(不能超过20个字)","readyonly":"true"})
@@ -48,7 +52,9 @@
             {"value":"其他","text":"其他"}
         ]
         })
-        #xTextArea_start({"colspan":1,"id":"hobbies","width":"80%","name":"hobbies","colspan":1,"rows":"10", "label":"自我描述","labelWidth":"120px","required":false,"cellVAlign":"top","readOnly":false})$!{userbaseInfo.HOBBIES}#xTextArea_end
+        #xTextArea_start({"colspan":1,"id":"hobbies","width":"80%","name":"hobbies","colspan":1,"rows":"8", "label":"自我描述","labelWidth":"120px","required":false,"cellVAlign":"top","readOnly":false})$!{userbaseInfo.HOBBIES}#xTextArea_end
+        #xTab_end
+        #xTabPanel_end
         #xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"center", "cellVAlign":"middle",
         "items":[
         {"value":"保存","onClick":"doSave()"}
@@ -70,5 +76,9 @@
                 alert('修改失败:'+data.errorInfo);
             }
         },"json");
+    }
+    function replaceSrc(id,preId){
+        $("#"+preId).attr("src","$!{service_name}/resources/images/blankTip.png");
+        $("#"+id).attr("value","");
     }
 </script>

@@ -7,11 +7,22 @@
         color: #fff !important;
     }
 </style>
-$contain.get('/nav.vm')
-##if($utils.common.isNotEmpty(${tpl.INTRO_TPL}) && $utils.common.isNotEmpty($introList))
-    $contain.get('/tpl/home/bio.vm')
-##elseif($utils.common.isNotEmpty($tpl.PORTAL_TPL))
+#if(${userInfo.INIT_STATUS} != 0)
+    $contain.get('/nav.vm')
+    ##if($utils.common.isNotEmpty(${tpl.INTRO_TPL}) && $utils.common.isNotEmpty($introList))
+        $contain.get('/tpl/home/bio.vm')
+    ##elseif($utils.common.isNotEmpty($tpl.PORTAL_TPL))
     ##$contain.get($!{tpl.PORTAL_TPL})
-##else
-##您的微官网首页模板还未配置，请先配置！
-##end
+    ##else
+    ##您的微官网首页模板还未配置，请先配置！
+    ##end
+#else
+    <script>
+        $(function(){
+            if(confirm("您还未补全个人资料，正在跳往个人信息配置页面!")) {
+
+            }
+            location.href="$!{service_name}/config/index.htm";
+        })
+    </script>
+#end

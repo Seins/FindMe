@@ -40,4 +40,23 @@
         AND
             l.ID=u.USER_ID
     </select>
+
+    <insert id="addNew" parameterClass="map">
+      INSERT INTO personal_info (USER_ID,USER_ICON,EDUCATION,GRADUATION_SCHOOL) VALUES (#userId#,#userIcon#,#education#,#graduationSchool#)
+    </insert>
+
+    <select id="queryExitUserByIdcard" parameterClass="map" resultClass="hashMap">
+      SELECT * From login_info
+        WHERE
+            IDCARD_NO=#idNumber#
+    </select>
+    <insert id="addNewLogin" parameterClass="map">
+        INSERT INTO login_info
+        (IDCARD_NO,CHINESE_NAME,ENGLISH_NAME,PASSWORD,CONTENT_IMG_URL,CAREER_OBJECTIVE)
+        VALUES
+        (#idNumber#,#chineseName#,#englishName#,md5(#password#),#contentImgUrl#,#careerObjective#)
+        <selectKey resultClass="string" type="post" keyProperty="id">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
  </sqlMap>

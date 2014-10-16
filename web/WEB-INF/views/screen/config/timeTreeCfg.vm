@@ -3,8 +3,8 @@
         #xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"right", "cellVAlign":"middle",
             "items":[
                 {"value":"新增","onClick":"doNew()"},
-                {"value":"修改","onClick":"doEdit()"},
-                {"value":"删除","onClick":"doDelete()"}
+                {"value":"修改","onClick":"doEdit()","style":"background: #F6A64E !important;color:#fff;"},
+                {"value":"删除","onClick":"doDelete()","style":"background: #E94A5F !important;color:#fff;"}
             ]
         })
         #xGrid({"colspan":1, "name":"dataGrid", "multiple":false, "dragAndDrop":true,

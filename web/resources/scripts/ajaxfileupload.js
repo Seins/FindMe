@@ -105,8 +105,9 @@ jQuery.extend({
 						    // process the data (runs the xml through httpData regardless of callback)
 						    var data = jQuery.uploadHttpData(xml, s.dataType);
 						    // If a local callback was specified, fire it and pass it the data
-						    if (s.success)
+						    if (s.success){
 							    s.success(data, status);
+                            }
 						    // Fire the global callback
 						    if (s.global)
 							    jQuery.event.trigger("ajaxSuccess", [xml, s]);
@@ -184,8 +185,9 @@ jQuery.extend({
 		    if (type == "script")
 			    jQuery.globalEval(data);
 		    // Get the JavaScript object, if JSON is used.
-		    if (type == "json")
-			    eval("data = " + data);
+		    if (type == "json"){
+                eval("data = " + data);
+            }
 		    // evaluate scripts within html
 		    if (type == "html")
 			    jQuery("<div>").html(data).evalScripts();

@@ -1,0 +1,98 @@
+body{
+	background:#eee;
+	margin: 0;
+	padding: 10px;
+	min-height: 600px;
+	min-width: 1250px;
+}
+a{
+	font-size: 14px;
+	font-family: "楷体";
+}
+.content{
+	margin: 45px auto;
+	background: #fff;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	width: 1150px;
+}
+.userIconDiv{
+	height: 280px;
+	width: 225px;
+	display: block;
+	padding: 0;
+	position: relative;
+	margin: 5px auto;
+	background: #91E8D4;
+    cursor: pointer;
+    overflow: hidden;
+}
+.userIconDiv img{
+	display: block;
+	margin: 10px auto;
+	width: 95%;
+}
+.divTitle{
+	font-size: 18px;
+	font-family: '微软雅黑';
+	word-spacing: 2px;
+	margin:0;
+	padding: 0;
+}
+.textCenter{
+	text-align: center;
+}
+.userInfoDiv{
+	width: expression(document.body.offsetWidth*0.6 + "px");
+	min-height: 380px;
+	margin: 0 auto;
+	padding-top: 20px;
+	min-width: 900px;
+	border-top: 2px solid #000;
+	display: block;
+	position: relative;
+	clear: both;
+}
+.userInfoDiv .infoTable{
+	width: 100%;
+	display: block;
+}
+.userInfoDiv .infoTable tbody tr td{
+	text-align: right;
+
+}
+.userInfoDiv .infoTable tbody tr td.tipTd{
+	margin: 0;
+	padding: 0;
+	clear: both;
+	background: #91E8D4;
+	max-height: 150px;
+	overflow: hidden;
+}
+.userInfoDiv .infoTable tbody tr td .tip{
+	width: 300px;
+	margin: 10px auto;
+	padding: 0;
+	font-size: 12px;
+	color:#fff;
+	line-height: 25px;
+	word-spacing: 2px;
+	text-align: left;
+	padding: 5px;
+}
+.btnTd input[type="button"]{
+	float: right;
+}
+.btnTd input[type="button"].cancle{
+	background:#FBB59D !important; 
+	color: #000;
+	float: left;
+}
+.btnTd input[type="button"].cancle:hover{
+	color: #fff;
+}
+
+input[type="file"]{
+    display: none;
+}

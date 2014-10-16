@@ -1,5 +1,5 @@
 body{
-    background:#19BB9B;
+    background:#19BB9B !important;
 }
 *:focus {outline: none;}
 .keySearch{
@@ -9,12 +9,11 @@ body{
     z-index:3;
     position: relative;
     display: block;
-    padding-top: 45px;
+    padding-top: 120px;
 }
 .searchDiv{
     width:450px;
     background: #fff;
-
 }
 .searchDiv i[class="icon-search"]{
     font-size: 20px;
@@ -35,7 +34,7 @@ body{
     width:1000px;
     margin:20px auto;
     padding:0;
-    min-height:580px;
+    min-height:500px;
     overflow:hidden;
 }
 .content .item{

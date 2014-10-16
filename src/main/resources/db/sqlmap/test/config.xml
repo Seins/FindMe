@@ -45,6 +45,7 @@
             l.CONTENT_IMG_URL=#contentImgUrl#,
             l.CAREER_OBJECTIVE=#careerObjective#,
             l.HOME_TPL=#homeTpl#,
+            l.INIT_STATUS=1,
             p.USER_ICON=#userIcon#,
             p.BIRTHDATE=#birthdate#,
             p.EDUCATION=#education#,
@@ -139,17 +140,17 @@
     </delete>
 
     <select id="queryAllCatalogById" parameterClass="map" resultClass="hashMap">
-        SELECT * FROM catalog
+        SELECT * FROM catalog_cfg
         WHERE
           USER_ID=#userId#
     </select>
     <select id="queryCatalogById" parameterClass="map" resultClass="hashMap">
-        SELECT * FROM catalog
+        SELECT * FROM catalog_cfg
         WHERE
           ID=#editId#
     </select>
     <insert id="addNewCatalog" parameterClass="map">
-        INSERT INTO `CATALOG`
+        INSERT INTO `catalog_cfg`
         (
             `CATALOG_NAME`,
             `CATALOG_PIC`,
@@ -168,7 +169,7 @@
 
     </insert>
     <update id="updateCatalogById" parameterClass="map">
-        UPDATE `CATALOG`
+        UPDATE `catalog_cfg`
         SET
         `CATALOG_NAME` = #catalogName#,
         `CATALOG_PIC` = #catalogPic#,
@@ -178,7 +179,7 @@
 
     </update>
     <delete id="deleteCatalogById" parameterClass="map">
-         DELETE FROM catalog
+         DELETE FROM catalog_cfg
          WHERE
           ID=#editId#
     </delete>

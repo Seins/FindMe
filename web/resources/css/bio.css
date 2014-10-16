@@ -1,5 +1,5 @@
 body{
-    background:#878B8E;
+    background:#eee;
     margin:0;
     padding:0;
 }
@@ -14,7 +14,7 @@ body{
     background:#fff;
     padding-left:10px;
     padding-right:10px;
-    padding-top: 55px;
+    padding-top: 120px;
 }
 .content .titleImg{
     width:100%;
@@ -64,14 +64,14 @@ body{
 }
 .contentLeft dt{
     display:block;
-    width:126px;
     height:40px;
     margin-top:10px;
     color:#000;
     text-align:left !important;
-    background: url(../images/home/tag-white.png) no-repeat;
+    background: #fff;
     overflow:hidden;
 }
+
 .contentLeft dt>font{
     font-size:20px;
     font:bold;
@@ -144,8 +144,8 @@ body{
 }
 
 .contentRight .detail{
-    margin:0;
     width:100%;
+    min-height:200px;
     display:block;
     background:#bbb;
     margin-bottom:10px;
@@ -166,10 +166,10 @@ body{
     float:left;
 }
 .print{
-    position:absolute;
-    top:10%;
-    right:10%;
-    color:#fff;
+    position:fixed;
+    top:20%;
+    right:2%;
+    color:#676E84;
     cursor:pointer;
 }
 .print:hover{

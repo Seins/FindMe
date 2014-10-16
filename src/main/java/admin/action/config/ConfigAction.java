@@ -296,4 +296,16 @@ public class ConfigAction extends AbstractAction {
             this.failure(modelMap,ex);
         }
     }
+
+    @HornRequestMapping("/config/newCatalogDetail")
+    public void catalogDetailCfg(ModelMap modelMap,Map params,@HornRequestParam(name="editId")String editId,HttpServletRequest request){
+        try{
+
+            this.success(modelMap);
+        }catch(BizException ex){
+            this.failure(modelMap,ex);
+        }catch (Exception ex){
+            this.failure(modelMap,ex);
+        }
+    }
 }

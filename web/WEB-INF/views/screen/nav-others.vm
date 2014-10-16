@@ -1,15 +1,95 @@
-<div class="homeNavLine">
-    <a href="$!{service_name}/">Find Me</a>
-    <ul class="homeNav">
+<link rel="stylesheet" type="text/css" href="$!{service_name}/resources/fontAwesome/css/font-awesome.css">
+<!--[if IE ]>
+<link rel="stylesheet" type="text/css" href="$!{service_name}/resources/fontAwesome/css/font-awesome-ie7.css">
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="$!{service_name}/resources/css/nav/style.css">
+<div class="nav">
+    <span class="title icon icon-th" ></span>
+    <ul class="navList">
         #if($!{userLogined})
-            <li><a href="$!{service_name}/home.htm">返回我的首页</a></li>
+            <li><a href="$!{service_name}/home.htm">我的首页</a></li>
         #else
-            <li ><a href="$!{service_name}/login.htm">登陆</a></li>
+            <li ><a href="$!{service_name}/login.htm"><i class="icon icon-signin"></i> 登陆</a></li>
+            <li ><a href="$!{service_name}/register.htm"><i class="icon icon-edit"></i> 注册</a></li>
         #end
-       #if($!{request.userId})
-        <li><a href="$!{service_name}/picWall.htm">照片墙</a></li>
-        <li><a href="$!{service_name}/othersHome.htm?userId=$!{request.userId}">他的主页</a></li>
-        <li><a href="$!{service_name}/othersTimeTree.htm?userId=$!{request.userId}">他的时光轴</a></li>
-       #end
+        #if($!{request.userId})
+            <li><a href="$!{service_name}/picWall.htm"><i class="icon icon-picture"></i> 照片墙</a></li>
+            <li><a href="$!{service_name}/othersHome.htm?userId=$!{request.userId}"><i class="icon icon-user-md"></i> 他的主页</a></li>
+            <li><a href="$!{service_name}/othersTimeTree.htm?userId=$!{request.userId}"><i class="icon icon-time"></i> 他的时光轴</a></li>
+        #end
+        <li class="logout"><a onclick="app.logout" ><i class="icon icon-signout"></i> 注销</a></li>
+
     </ul>
+    <a href="$!{service_name}/" class="homeLink"><i class="icon icon-home"></i> Find Me</a>
 </div>
+<script type="text/javascript">
+    //菜单状态
+    var menuStatus=0;
+    //动画执行标记
+    var slideStatus=0;
+    $('.title').click(function(){
+        //var h=document.documentElement.clientHeight;
+        if(menuStatus==0){
+            slideStatus=1;
+            $('.title').animate({
+                "width":"200px"
+            },500,function(){
+                $('.title').removeClass("icon-th");
+                $('.title').addClass("icon-arrow-left");
+                $('.navList').slideDown("fast");
+                slideStatus=0;
+                menuStatus=1;
+            });
+            //$('.navList').height(h-80);
+
+        }else{
+            slideStatus=1;
+            $('.navList').slideUp("fast",function(){
+                $('.title').animate({
+                    "width":"40px"
+                },500,function(){
+                    $('.title').addClass("icon-th");
+                    $('.title').removeClass("icon-arrow-left");
+                    slideStatus=0;
+
+                    menuStatus=0;
+                });
+            });
+        }
+
+    });
+
+    $('.navList li a').click(function(){
+
+        var _this=$(this);
+        $('.navList').slideUp("fast",function(){
+            $('.title').animate({
+                "width":"40px"
+            },500,function(){
+                $('.title').addClass("icon-th");
+                $('.title').removeClass("icon-arrow-left");
+                if(_this.attr("href")!=undefined&&_this.attr("href")!=""&&_this.attr("href")!=''){
+                    window.location.href=_this.attr("href");
+                }else{
+                    app.logout();
+                }
+            });
+        });
+        return false;
+    })
+    $(document).click(function(){
+        if(menuStatus==1&&slideStatus==0){
+            slideStatus=1;
+            $('.navList').slideUp("fast",function(){
+                $('.title').animate({
+                    "width":"40px"
+                },500,function(){
+                    $('.title').addClass("icon-th");
+                    $('.title').removeClass("icon-arrow-left");
+                    slideStatus=0;
+                    menuStatus=0;
+                });
+            });
+        }
+    });
+</script>

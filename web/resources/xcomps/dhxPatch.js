@@ -115,7 +115,7 @@ function newDHXGridFromTable(obj, init) {
 		try{
 			eval(bfInit);
 		}catch(e){
-			alert("onBeforeInit Function Error:" + e);
+			alert("初始化前发生出错:" + e);
 		}
 	}
 	
@@ -394,7 +394,7 @@ function newDHXGridFromTable(obj, init) {
 			eval("var _rdfunc=function(rid, cid){" + func + "}");
 			windowf.attachEvent("onRowDblClicked", _rdfunc);
 		}catch(e){
-			alert("onRowDblClicked Function Error:" + e);
+			alert("onRowDblClicked Function Error:" + e.message);
 		}
 	}
 	func = mr.getAttribute("remoteSort");
@@ -420,7 +420,7 @@ function newDHXGridFromTable(obj, init) {
 		try{
 			eval(afInit);
 		}catch(e){
-			alert("onInit Function Error:" + e);
+			alert("初始化错误:" + e.message);
 		}
 	}
 	return windowf;

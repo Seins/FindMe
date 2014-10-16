@@ -59,16 +59,19 @@ public class MainAction extends AbstractAction {
                         @HornRequestParam(name="toUrl", scope={com.sagahl.horn.action.ParamScope.REQUEST_PARM}) String toUrl,
                         Map<String, String> params,
                         HttpSession session, HttpServletRequest request){
-        System.out.println("Login-testAction=======idCardNo:"+idcardNo+" password:"+password+" toUrl:"+toUrl);
-        LoginUser loginUser=testService.checkUser(params);
-
-        if (loginUser == null) {
-            throw new LoginException("用户登录名或密码错误！");
+        try{
+            LoginUser loginUser=testService.checkUser(params);
+            if (loginUser == null) {
+                throw new LoginException("用户登录名或密码错误！");
+            }
+            request.getSession(true).setAttribute("$_LoginUser",loginUser);
+            return RedirectView.REDIRECT_KEY+(StringUtil.isEmpty(toUrl) ? "/home.htm" : toUrl);
+        }catch(LoginException e){
+            throw  e;
+        }catch (Exception e){
+            log.error("发生异常:"+params,e);
+            throw  new BizException("服务器发生异常，请稍后再试或联系客服解决");
         }
-        request.getSession(true).setAttribute("$_LoginUser",loginUser);
-        // toUrl=toUrl+"?userId="+loginUser.getId();
-        return RedirectView.REDIRECT_KEY+(StringUtil.isEmpty(toUrl) ? "/home.htm" : toUrl);
-        //  return null;
     }
 
 
@@ -188,5 +191,30 @@ public class MainAction extends AbstractAction {
         }
     }
 
+    @HornRequestMapping(value = "/register")
+    public void register(@HornRequestParam(name = SysConstant.SESSION_KEY_LOGIN_USER, scope = { ParamScope.SESSION_ATTRIBUTE }) LoginUser loginUser,
+                         HttpServletRequest request,Map params,ModelMap modelMap){
+        try{
+
+        }catch(BizException e){
+            throw  e;
+        }catch (Exception e){
+            log.error("发生异常:"+params,e);
+            throw  new BizException("服务器错误,请稍后再试或联系客服人员解决!");
+        }
+    }
+    @HornRequestMapping(value = "/saveRegister")
+    public void saveRegister(@HornRequestParam(name = SysConstant.SESSION_KEY_LOGIN_USER, scope = { ParamScope.SESSION_ATTRIBUTE }) LoginUser loginUser,
+                             HttpServletRequest request,Map params,ModelMap modelMap){
+        try{
+            testService.addNew(params);
+            this.success(modelMap);
+        }catch(BizException e){
+            throw  e;
+        }catch (Exception e){
+            log.error("发生异常:"+params,e);
+            throw  new BizException("服务器错误,请稍后再试或联系客服人员解决!");
+        }
+    }
 
 }

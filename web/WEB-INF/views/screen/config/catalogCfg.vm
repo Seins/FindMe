@@ -1,10 +1,17 @@
+<style>
+    body{
+        margin: 0 !important;
+    padding: 0 !important;
+    }
+</style>
 #xForm_start({"id":"catalogForm", "target":"_self"})
-#xLayoutPanel_start({"debug":false,"width:":"80%", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
-#xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"right", "cellVAlign":"middle",
+#xLayoutPanel_start({"debug":false,"width:":"790px", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
+#xButtons({"colspan":1,"cellHeight":"40px","cellAlign":"right", "btnAlign":"right", "cellVAlign":"left",
 "items":[
 {"value":"新增","onClick":"doNew()"},
-{"value":"修改","onClick":"doEdit()"},
-{"value":"删除","onClick":"doDelete()"}
+{"value":"配置详细页内容","onClick":"detailCfg()"},
+{"value":"修改","onClick":"doEdit()","style":"background: #F6A64E !important;color:#fff;"},
+{"value":"删除","onClick":"doDelete()","style":"background: #E94A5F !important;color:#fff;"}
 ]
 })
 #xGrid({"colspan":1, "name":"dataGrid", "multiple":false, "dragAndDrop":true,
@@ -20,12 +27,14 @@
 {"dataIdx":"CATALOG_PIC", "width":160, "title":"预览图","align":"center","render":"imgRender(td,data,rowData)"},
 {"dataIdx":"CATALOG_URL", "width":360, "title":"详细页面链接","align":"left"}
 ]})
+
 #xLayoutPanel_end
 #xForm_end
 <script>
     function doQuery(){
         dataGrid.clearAndLoadx("$!{service_name}/config/catalogCfg.json");
     }
+
     function doEdit(rid, cid){
         var sdata, id;
         if(rid){
@@ -39,21 +48,27 @@
         }
         id = sdata.ID;
 
-        var win = xWindow.getInstance("editCatalog", {w:680, h:500});
+       var win = xWindow.getInstance("editCatalog", {w:900, h:600});
         win.centerOnScreen();
-        win.setModal(true);
+        win.setModal(false);
         win.attachURL("$!{service_name}/config/editCatalog.htm?editId=" + id);
         win.setText("修改模块信息");
     }
 
     function doNew(){
-        var win = xWindow.getInstance("newCatalog", {w:680, h:500});
+        var win = xWindow.getInstance("newCatalog", {w:900, h:550});
         win.centerOnScreen();
         win.setModal(true);
         win.attachURL("$!{service_name}/config/newCatalog.htm");
         win.setText("新建模块信息");
     }
-
+    function detailCfg(){
+        var win = xWindow.getInstance("detailContentCfg", {w:900, h:550});
+        win.centerOnScreen();
+        win.setModal(true);
+        win.attachURL("$!{service_name}/config/newCatalogDetail.htm");
+        win.setText("模块详细页信息配置");
+    }
     function doDelete(rid,cid){
         var sdata, id;
         if(rid){

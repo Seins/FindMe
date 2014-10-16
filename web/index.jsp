@@ -21,14 +21,14 @@
               display:block;
               text-align:center;
               clear:both;
-              font-family:'宋体';
+              font-family:'幼圆';
               font-size:24px;
               font-weight:700;
               margin:0;
               padding-top:10px;
               padding-bottom: 10px;
               width:60%;
-              color:#09f;
+              color:#000;
           }
           .content{
               width:1000px;
@@ -52,7 +52,7 @@
               position:relative;
               text-align:center;
               cursor:pointer;
-              font-family:'宋体';
+              font-family:'幼圆';
               font-size:36px;
               font-weight:700;
           }
@@ -62,22 +62,26 @@
           }
           .content tbody tr>td a{
               text-decoration:none;
-              line-height: 400px;;
+              line-height: 400px;
+              color:#000;
           }
           .content tbody tr>td a:hover{
               color:#fff;
+          }
+          .companyInfo p{
+              color:#000 !important;
           }
       </style>
   </head>
   <body>
 
-  <div class="title">Find</div>
+  <div class="title">你是来这里找...</div>
   <table class="content">
       <tbody>
       <tr >
-          <td><a href="#">Jobs</a></td>
-          <td><a href="/picWall.htm">Personal</a></td>
-          <td><a href="#">Me</a></td>
+          <td><a href="/register.htm">工作</a></td>
+          <td><a href="/picWall.htm">人才!?</a></td>
+          <td><a href="/othersHome.htm?userId=1">还是...我?</a></td>
       </tr>
       </tbody>
   </table>

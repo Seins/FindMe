@@ -1,0 +1,84 @@
+input{
+    outline:none;
+}
+.inputBox{
+	
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+.inputBox label{
+	font-size: 12px;
+	font-family: '幼圆';
+	color:#60DDC0;
+	margin: 0;
+	margin-right: 5px;
+	padding: 0;
+	line-height: 25px;
+	word-spacing: 1px;
+}
+.inputBox input[type="text"],.inputBox input[type="password"]{
+	font-size: 12px;
+	width: 170px;
+	font-family: '微软雅黑';
+	border: 0;
+	background: #fff;
+	margin-top: 5px;
+	padding: 0;
+	text-indent: 0.1cm;
+	border-bottom: 1px solid #000;
+}
+
+input[type="button"]{
+	border:0;
+	border-radius: 0;
+	height: 26px;
+	width: 120px;
+	color: white;
+	background: #29A3A3;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 400;
+	font: bold;
+}
+input[type="button"]:hover{
+	color:#000;
+}
+
+.cancle{
+	background:#FBB59D !important; 
+	color: #000;
+}
+.cancle:hover{
+	color: #fff;
+}
+.inputFileBox{
+    width: 99%;
+    margin: 0 auto;
+    display: block;
+    height: 26px;
+    position: relative;
+}
+input[type="file"]{
+    border:0;
+    border-radius: 0;
+    height: 26px;
+    width: 225px;
+    color: white;
+    background: #29A3A3;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    font: bold;
+}
+.delete{
+    background: #E94A5F !important;
+    color:#000;
+}
+.right{
+    float: right;
+    clear: both;
+}
+.left{
+    float: left;
+    clear: both;
+}

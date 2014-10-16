@@ -1,10 +1,14 @@
 <script>
     $(document).ready(function(e) {
-        $("#mainIframe").load(function(){
-            var width=$('.content').width()-210;
-            console.info("width:%o",width);
-            $(this).width( width < 790 ? 790 : width );
-        });
+        if ((navigator.userAgent.indexOf('MSIE') >= 0)
+                && (navigator.userAgent.indexOf('Opera') < 0)) {
+
+        } else {
+            $("#mainIframe").load(function () {
+                var width = $('.content').width() - 210;
+                $(this).width(width < 750 ? 750 : width);
+            });
+        }
     });
 </script>
 
@@ -36,7 +40,12 @@ $contain.get('/nav.vm')
                 </ul>
             </td>
             <td class="main">
-                <iframe  id="mainIframe" name="mainIframe" src="$!{service_name}/config/baseInfoCfg.htm"  align="left" frameborder="0"  />
+               <iframe  id="mainIframe" name="mainIframe" src="$!{service_name}/config/baseInfoCfg.htm"  align="left" frameborder="0"  />
+               #*xForm_start({"id":"timeTreeCfg", "target":"_self"})
+                   #xLayoutPanel_start({"id":"contentLP","name":"contentLP","debug":true,"width:":"790px", "cols":1, "fieldset":true, "fieldsetStyle":"padding-top:1px;margin-top:1px;border:0px"})
+
+                #xLayoutPanel_end
+             *#
             </td>
         </tr>
     </tbody>
